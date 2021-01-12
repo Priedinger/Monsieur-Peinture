@@ -1,0 +1,8 @@
+<div class="container">
+  <%= simple_form_for @banner do |f| %>
+    <%= f.input :title %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true, id: 'photo-input' } %>
+    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+    <%= f.button :submit, "Create", :class => "btn btn-primary w-100" %>
+  <% end %>
+</div>

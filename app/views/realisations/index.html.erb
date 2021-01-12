@@ -1,0 +1,15 @@
+<div class="container">
+    <%= link_to "créer une réalisation", new_realisation_path %>
+
+  <div class="realisations-grid">
+
+    <% @realisations.each do |realisation| %>
+      <div class="realisation">
+        <%= link_to realisation_path(realisation) do %>
+          <%= cl_image_tag realisation.photos.first.key, crop: :fill %>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

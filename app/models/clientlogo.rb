@@ -1,0 +1,2 @@
+class Clientlogo < ApplicationRecord
+end

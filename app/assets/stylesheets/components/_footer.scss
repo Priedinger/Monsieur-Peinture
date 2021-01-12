@@ -1,0 +1,46 @@
+.footer {
+  background: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: white;
+   p{
+   margin: 0;
+  }
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+
+.footer-text a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 0px 10px;
+}
+
+.footer-links a:hover {
+  opacity: 0.5;
+}
+.footer-text a:hover {
+  opacity: 0.5;
+}
+
+.footer .fa-heart {
+  color: #D23333;
+}

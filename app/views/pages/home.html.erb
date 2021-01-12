@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+  <%= link_to "créer banniere", new_banner_path %>
+
+
+<div class="banner" >
+
+      <%= render 'shared/banner' %>
+
+</div>
+
+<div class="container">
+
+  <div class="counter">
+  Nous réalisons des fresques artistiques et décoratives pour les collectivités locales, les entreprises, les bailleurs, les aménageurs, les agences de communication, ...
+  50 000 m2 de fresques réalisées
+  </div>
+
+  <div class="logos">
+  <h4> Pour qui nous le faisons </h4>
+  </div>
+
+  <div class="verbatims">
+  <h4>  Ils parlent de nous </h4>
+      <%= render 'shared/text_caroussel' %>
+  </div>
+</div>

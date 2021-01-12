@@ -1,0 +1,16 @@
+<div class="container">
+
+ <div class="text">
+  <%= @realisation.title %>
+ </div>
+ <div class="photos">
+  <% @realisation.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</div>
+
+
+
+
+      <%= link_to "modifier une réalisation", edit_realisation_path %>
+</div>

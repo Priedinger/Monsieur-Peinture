@@ -1,14 +1,20 @@
-var n = 50000; // Nombre final du compteur
-var cpt = 0; // Initialisation du compteur
-var duree = 5; // Durée en seconde pendant laquel le compteur ira de 0 à 15
-var delta = (5000 / n); // On calcule l'intervalle de temps entre chaque rafraîchissement du compteur (durée mise en milliseconde)
-var node =  document.getElementById("compteur"); // On récupère notre noeud où sera rafraîchi la valeur du compteur
+import { CountUp } from 'countup.js';
 
-function countdown() {
-  node.innerHTML = ++cpt;
-  if( cpt < n ) { // Si on est pas arrivé à la valeur finale, on relance notre compteur une nouvelle fois
-     setTimeout(countdown, delta);
-  }
+
+const num = 50000
+
+const options = {
+  separator: '',
+  suffix: ' m²'
+};
+
+
+const countUp = new CountUp('compteur', num, options);
+if(compteur)
+if (!countUp.error) {
+  countUp.start();
+} else {
+  console.error(countUp.error);
 }
 
-setTimeout(countdown, delta);
+export { countUp };

@@ -23,16 +23,15 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
+
 import "bootstrap";
-import { countUp } from '../components/counter.js';
+import { initCountUp } from '../components/counter.js';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
 
-  countUp();
+  initCountUp();
 
-  // Call your functions here, e.g:
-  // initSelect2();
 });

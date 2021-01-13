@@ -1,13 +1,33 @@
 <div class="container">
 
- <div class="text">
-  <%= @realisation.title %>
- </div>
- <div class="photos">
-  <% @realisation.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</div>
+  <div class="realisation-infos">
+
+     <div class="realisation-list">
+        <p> <strong> Client: </strong> <%= @realisation.client %> </p>
+        <p> <strong> Localisation: </strong> <%= @realisation.localization %> </p>
+        <p> <strong> Agence: </strong> <%= @realisation.agency %> </p>
+        <p> <strong> Artiste: </strong> <%= @realisation.artist %> </p>
+        <p> <strong> Surface: </strong> <%= @realisation.surface %> </p>
+        <p> <strong> Durée de réalisation: </strong> <%= @realisation.duration %> jours </p>
+        <p> <strong> Crédits photos: </strong> <%= @realisation.photo_credits %> </p>
+
+    </div>
+    <div class="realisation-text">
+      <p> <strong> Brief client: </strong> <%= @realisation.description %> </p>
+    </div>
+  </div>
+
+
+  <div class="realisations-grid">
+
+    <% @realisation.photos.each do |photo| %>
+      <div class="realisation">
+          <%= cl_image_tag photo.key, crop: :fill %>
+      </div>
+    <% end %>
+
+  </div>
+
 
 
 

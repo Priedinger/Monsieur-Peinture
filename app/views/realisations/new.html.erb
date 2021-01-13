@@ -1,8 +1,19 @@
 <div class="container">
   <%= simple_form_for @realisation do |f| %>
-    <%= f.input :title %>
+    <%= f.input :title, label: "Titre" %>
+    <%= f.input :category, as: :radio_buttons, collection: ['Fresques décoratives','Art Urbain', 'Publicités peintes', 'Sigalétique'], wrapper: :vertical_collection_inline %>
+    <%= f.input :client, label: "Client" %>
+    <%= f.input :localization, label: "Localisation" %>
+    <%= f.input :agency, label: "Agence" %>
+    <%= f.input :artist, label: "Artiste" %>
+    <%= f.input :surface, label: "Surface" %>
+    <%= f.input :duration, label: "Durée de réalisation" %>
+    <%= f.input :photo_credits, label: "Crédits photos" %>
+    <%= f.input :description, label: "Brief client" %>
     <%= f.input :photos, as: :file, input_html: { multiple: true, id: 'photo-input' } %>
     <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    <%= f.button :submit, "Create", :class => "btn btn-primary w-100" %>
+    <%= f.button :submit, "Ajouter la réalisation", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>
+
+

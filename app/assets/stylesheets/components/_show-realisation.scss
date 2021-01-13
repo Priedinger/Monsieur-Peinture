@@ -1,0 +1,16 @@
+.realisation-infos{
+  display: flex;
+  justify-content: space-between;
+  margin: 10vh 0;
+
+  .realisation-list{
+    p {
+      margin: 0;
+    }
+  }
+
+.realisation-text{
+    width: 500px;
+    margin-right: 10vh;
+ }
+}

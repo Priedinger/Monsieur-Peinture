@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_101804) do
   end
 
   create_table "realisations", force: :cascade do |t|
+    t.string "category"
     t.string "title"
     t.string "client"
     t.string "localization"

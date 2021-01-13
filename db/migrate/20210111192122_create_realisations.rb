@@ -1,6 +1,7 @@
 class CreateRealisations < ActiveRecord::Migration[6.0]
   def change
     create_table :realisations do |t|
+      t.string :category
       t.string :title
       t.string :client
       t.string :localization

@@ -1,0 +1,39 @@
+
+.contact{
+text-align: center;
+vertical-align: middle;
+  .text{
+    margin-top: 8%;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .button{
+    margin-top: 10%;
+    padding: 1vh;
+    margin-left: 43%;
+    background-color: black;
+    width: 20vh;
+    text-align: center;
+    border-radius: 4px;
+    a {
+      color: white;
+    }
+  }
+  .contact-infos{
+    display: flex;
+    justify-content: space-around;
+    width: 50vh;
+    margin-left: 32%;
+    margin-top: 10%;
+    .contact-infos-left{
+
+    text-align: right;
+  }
+    .contact-infos-right{
+    text-align: left;
+
+    }
+  }
+}

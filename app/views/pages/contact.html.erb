@@ -1,10 +1,27 @@
 <div class="container">
 
-  <p>Artistes, partenaires, clients :
-  n'hésitez pas à nous contacter pour nous parler de vous et de votre projet !</p>
+  <div class="contact">
 
-  <%= link_to "ECRIVEZ NOUS!", contact_path  %>
+    <div class="text">
+      <p>Artistes, partenaires, clients :</p>
+     <p> n'hésitez pas à nous contacter pour nous parler de vous et de votre projet !</p>
+    </div>
 
-  <p> 137 rue d’Aboukir xxx@xxx.COM 75002 Paris 0677663904</p>
+    <div class="button">
+      <%= link_to "ECRIVEZ NOUS!", contact_path  %>
+    </div>
 
+    <div class="contact-infos">
+
+      <div class="contact-infos-left">
+        <p> 137 rue d’Aboukir  </p>
+        <p>75002 Paris </p>
+      </div>
+      <div class="contact-infos-right">
+        <p>xxx@xxx.COM</p>
+        <p>0677663904</p>
+      </div>
+    </div>
+
+  </div>
 </div>

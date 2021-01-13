@@ -26,18 +26,20 @@ class RealisationsController < ApplicationController
   def update
     @realisation = Realisation.find(params[:id])
     @realisation.update(realisation_params)
+    redirect_to realisation_path, notice: "Réalisation crée"
+
   end
 
   def delete
     @realisation = Realisation.find(params[:id])
     @realisation.destroy
-    redirect_to realisations_path, notice: "Réalisation mise à jour !"
+    redirect_to realisations_path, notice: "Réalisation supprimée !"
   end
 
     private
 
   def realisation_params
-    params.require(:realisation).permit(:title, photos: [])
+    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, photos: [])
   end
 
 end

@@ -4,9 +4,24 @@
 
 .column{
   width: 33%;
-  margin: 10vh;
+  margin: 3vh;
+  .title{
+    text-align: center;
+    }
+  .photo{
+    text-align: center;
+     img {
+      height: 30vh;
+      width: 30vh;
+      margin-bottom: 5vh;
+    }
+  }
+
 }
 
+.partners-title{
+    text-align: center;
+}
 
 .partners{
   display: flex;
@@ -15,4 +30,13 @@
 .partner{
   width: 50%;
   margin: 10vh;
+    text-align: center;
+
+  .photo{
+   img {
+    height: 30vh;
+    width: 30vh;
+    margin-bottom: 5vh;
+  }
+}
 }

@@ -15,3 +15,20 @@
   }
 }
 
+
+.realisations-navbar{
+  display: flex;
+  justify-content: space-between;
+  a{
+    color: black;
+  }
+  .realisations-navbar-filters{
+    display: flex;
+    .filter{
+      margin-left: 3vh;
+       a{
+    color: black;
+  }
+    }
+  }
+}

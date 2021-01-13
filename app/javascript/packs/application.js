@@ -27,8 +27,6 @@ require("channels")
 import "bootstrap";
 import { initCountUp } from '../components/counter.js';
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
 

@@ -1,9 +1,43 @@
+.midnightHeader.white {
+  color: white;
+  path {
+    fill: white;
+  }
+}
+
+.midnightHeader.grey {
+  path {
+    fill: grey;
+  }
+  a {
+    color: black;
+    text-shadow: none;
+  }
+}
+
+.midnightInner {
+  display: flex;
+  align-items: center;
+  // padding: 1rem;
+  // p {
+  //   margin-bottom: 0;
+  // }
+}
+
+
 .navbar-lewagon {
   justify-content: space-between;
   background: transparent;
   color: white;
   position: fixed;
+  width: 100%;
   z-index: 1;
+  a {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    font-size: 2vh;
+    padding-left: 1rem;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {

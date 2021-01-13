@@ -2,21 +2,36 @@
 
 
 <div class="banner" >
-
-      <%= render 'shared/banner' %>
-
+  <%= render 'shared/banner' %>
 </div>
 
 <div class="container">
 
+
   <div class="counter">
-  Nous réalisons des fresques artistiques et décoratives pour les collectivités locales, les entreprises, les bailleurs, les aménageurs, les agences de communication, ...
-  50 000 m2 de fresques réalisées
+    <p> Nous réalisons des fresques artistiques et décoratives pour les collectivités locales, les entreprises, les bailleurs, les aménageurs, les agences de communication, ...
+  </p><H2 id="compteur">0 </h2> <p> m2 de fresques réalisées</p>
+
+
+
   </div>
 
   <div class="logos">
+
+      <%= link_to "Ajouter logo client", new_clientlogo_path %>
+
   <h4> Pour qui nous le faisons </h4>
+
+    <div class="logos-grid">
+      <% @current_logos.each do |logo| %>
+        <div class="logo">
+          <%= cl_image_tag logo.photo.key, class: "d-block w-100"%>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+      <%= link_to "Ajouter verbatim", new_verbatim_path %>
 
   <div class="verbatims">
   <h4>  Ils parlent de nous </h4>

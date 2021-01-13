@@ -39,6 +39,6 @@ class BannersController < ApplicationController
     private
 
   def banner_params
-    params.require(:banner).permit(:title, photos: [])
+    params.require(:banner).permit(:title, :photo)
   end
 end

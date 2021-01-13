@@ -1,8 +1,10 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home , :services, :about, :contact]
 
   def home
-    @current_banner = Banner.first
+    @current_banners = Banner.all
+    @current_logos = Clientlogo.all
+    @current_verbatims = Verbatim.all
   end
 
   def services

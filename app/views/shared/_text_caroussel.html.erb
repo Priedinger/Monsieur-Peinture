@@ -1,66 +1,69 @@
+<% unless @current_verbatims.empty? %>
 
-
-<!-- Head tags to include FontAwesome -->
-<head>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-</head>
-
-<div class="container">
-  <div class='row'>
-    <div class='col-md-offset-2 col-md-8'>
-      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-        <!-- Bottom Carousel Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#quote-carousel" data-slide-to="1"></li>
-          <li data-target="#quote-carousel" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Carousel Slides / Quotes -->
-        <div class="carousel-inner">
-
-          <!-- Quote 1 -->
-          <div class="item active">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-9">
-                  <p> “I find it a pleasure to work with Colossal for the simple fact that they answer the phone and get back to me in a timely manner, unlike other large outdoor companies that I have worked with. Colossal has a very good sense of effective communication.”
-                    <br>PHILLIP RAGAWAY Building Owner in Portland, Oregon
-                  </p>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 2 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-9">
-                   <p> “I find it a pleasure to work with Colossal for the simple fact that they answer the phone and get back to me in a timely manner, unlike other large outdoor companies that I have worked with. Colossal has a very good sense of effective communication.”
-                    <br>PHILLIP RAGAWAY Building Owner in Portland, Oregon
-                  </p>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 3 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-9">
-                  <p> “I find it a pleasure to work with Colossal for the simple fact that they answer the phone and get back to me in a timely manner, unlike other large outdoor companies that I have worked with. Colossal has a very good sense of effective communication.”
-                    <br>PHILLIP RAGAWAY Building Owner in Portland, Oregon
-                  </p>
-                </div>
-              </div>
-            </blockquote>
+<div id="text-carroussel<%= @current_verbatims %>" class="carousel slide" data-ride="carousel" data-interval="10000" data-pause="false">
+<!--  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  </ol> -->
+  <div class="carousel-inner">
+    <%  @current_verbatims.each_with_index do |verbatim, index|%>
+      <% if index == 0 %>
+        <div class="carousel-item active">
+          <div class="verbatim">
+            <div class="verbatim-infos">
+              <p> <%= verbatim.citation %> </p>
+              <p> <%= verbatim.author %></p>
+            </div>
+            <div class="verbatim-photo">
+              <%= cl_image_tag verbatim.photo.key %>
+            </div>
           </div>
         </div>
-
-        <!-- Carousel Buttons Next/Prev -->
-        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
-      </div>
-    </div>
-  </div>
+      <% else %>
+        <div class="carousel-item">
+          <div class="verbatim">
+            <div class="verbatim-infos">
+              <p> <%= verbatim.citation %> </p>
+              <p> <%= verbatim.author %></p>
+            </div>
+            <div class="verbatim-photo">
+              <%= cl_image_tag verbatim.photo.key %>
+            </div>
+          </div>
+     </div>
+      <% end %>
+    <% end %>
+  </div><!--
+  <a class="carousel-control-prev" href="#Carroussel<%= @current_verbatims %>" role="button" data-slide="prev">
+    <i class="fas fa-chevron-left"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#Carroussel<%= @current_verbatims %>" role="button" data-slide="next">
+    <i class="fas fa-chevron-right"></i>
+    <span class="sr-only">Next</span>
+  </a> -->
 </div>
+
+
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,3 @@
 class Banner < ApplicationRecord
-    has_many_attached :photos
+    has_one_attached :photo
 end

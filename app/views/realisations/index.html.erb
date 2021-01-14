@@ -1,21 +1,29 @@
 <div class="container">
+
+
+
+
+
     <%= link_to "créer une réalisation", new_realisation_path %>
+
+
+
 
     <div class="realisations-navbar">
       <%= link_to 'Nos réalisations', realisations_path %>
       <div class="realisations-navbar-filters">
 
         <div class="filter">
-          <%= link_to 'Fresques décoratives', realisations_path %>
+          <%= link_to 'Fresques décoratives', realisations_path(query:["Fresques décoratives"]) %>
         </div>
         <div class="filter">
-          <%= link_to 'Art Urbain',  realisations_path%>
+          <%= link_to 'Art Urbain', realisations_path(query:["Art Urbain"]) %>
         </div>
         <div class="filter">
-          <%= link_to 'Publicités peintes', realisations_path %>
+          <%= link_to 'Publicités peintes', realisations_path(query:["Publicités peintes"]) %>
         </div>
         <div class="filter">
-          <%= link_to 'Signalétique', realisations_path %>
+          <%= link_to 'Signalétique', realisations_path(query:["Signalétique"]) %>
         </div>
       </div>
     </div>

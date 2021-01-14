@@ -2,7 +2,12 @@ class RealisationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create, :edit, :update, :delete]
 
   def index
-    @realisations = Realisation.all
+
+    if params[:query].present?
+      @realisations = Realisation.where(category: params[:query])
+    else
+      @realisations = Realisation.all
+    end
   end
 
   def show

@@ -23,20 +23,13 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
+
 import "bootstrap";
-// import "../components/text-carousel"
-import "../components/counter"
+import { initCountUp } from '../components/counter.js';
 
-
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
 
-// countdown();
+  initCountUp();
 
-// textCarousel();
-
-  // Call your functions here, e.g:
-  // initSelect2();
 });

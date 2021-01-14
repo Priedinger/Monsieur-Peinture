@@ -13,12 +13,22 @@
 
  <body>
     <div class="content-wrapper">
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
 
-    <%= yield %>
+      <%= yield %>
     </div>
     <%= render 'shared/footer' %>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/jquery@1.11,npm/midnight.js@1.1"></script>
+    <script src="//cdn.jsdelivr.net/npm/midnight.js@1.1/dist/midnight.jquery.min.js"></script>
+    <script>
+    // Start midnight
+    $(document).ready(function(){
+      // Change this to the correct selector for your nav.
+      $('div.navbar').midnight();
+    });
+  </script>
   </body>
 
 </html>

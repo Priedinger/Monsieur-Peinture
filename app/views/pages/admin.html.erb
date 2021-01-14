@@ -40,6 +40,6 @@
 <% @realisations.each do |realisation| %>
   <p> <%= realisation.title %> </p>
   <%= link_to "Editer", edit_realisation_path(realisation.id) %>
-  <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+  <%= button_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
 <% end %>
 

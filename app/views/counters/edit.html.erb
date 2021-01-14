@@ -1,0 +1,5 @@
+<div class="container">
+  <%= simple_form_for @counter do |f| %>
+    <%= f.input :surface, label: "Nouvelle surface totale" %> <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
+  <% end %>
+</div>

@@ -31,14 +31,14 @@ class RealisationsController < ApplicationController
   def update
     @realisation = Realisation.find(params[:id])
     @realisation.update(realisation_params)
-    redirect_to realisation_path, notice: "Réalisation crée"
+    redirect_to admin_path, notice: "Réalisation editée"
 
   end
 
   def delete
     @realisation = Realisation.find(params[:id])
     @realisation.destroy
-    redirect_to realisations_path, notice: "Réalisation supprimée !"
+    redirect_to admin_path, notice: "Réalisation supprimée !"
   end
 
     private

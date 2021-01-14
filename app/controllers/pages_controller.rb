@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @current_banners = Banner.all
     @current_logos = Clientlogo.all
     @current_verbatims = Verbatim.all
+    @displayed_counter = Counter.first
   end
 
   def services
@@ -14,5 +15,14 @@ class PagesController < ApplicationController
   end
 
   def contact
+  end
+
+  def admin
+    @current_banners = Banner.all
+    @current_logos = Clientlogo.all
+    @current_verbatims = Verbatim.all
+    @displayed_counter = Counter.first
+    @realisations = Realisation.all
+    @articles = Article.all
   end
 end

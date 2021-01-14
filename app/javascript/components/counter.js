@@ -1,7 +1,8 @@
 import { CountUp } from 'countup.js';
 
 
-const num = 50000;
+const num = document.getElementById('counter').dataset.value;
+
 
 const options = {
   separator: '',
@@ -10,15 +11,24 @@ const options = {
 };
 
 const initCountUp = () => {
-  const counter = document.getElementById('counter');
+
+let start = true
+
   if (counter) {
-    const countUp = new CountUp('counter', num, options);
-    if (!countUp.error) {
-      countUp.start();
-    } else {
-      console.error(countUp.error);
-    };
-  };
+    window.addEventListener('scroll', () => {
+      if (window.scrollY !== 0) {
+        if (start === true){
+          const countUp = new CountUp('counter', num, options);
+          start = false
+          if (!countUp.error) {
+            countUp.start();
+          } else {
+            console.error(countUp.error);
+          };
+        };
+      }
+     })
+   };
 };
 
 export { initCountUp };

@@ -26,14 +26,14 @@ class BannersController < ApplicationController
   def update
     @banner = Banner.find(params[:id])
     @banner.update(banner_params)
-    redirect_to root_path, notice: "Bannière modifiée"
+    redirect_to admin_path, notice: "Bannière modifiée"
 
   end
 
   def delete
     @banner = Banner.find(params[:id])
     @banner.destroy
-    redirect_to root_path, notice: "Bannière supprimée"
+    redirect_to admin_path, notice: "Bannière supprimée"
   end
 
     private

@@ -1,0 +1,45 @@
+
+<h2>Page d'accueil</h2>
+<p>Photos de la bannière</p>
+
+<%= link_to "Ajouter une photo à la bannière", new_banner_path %>
+<% @current_banners.each do |banner| %>
+  <p> <%= cl_image_tag banner.photo.key %> </p>
+  <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+<% end %>
+
+<br>
+<p>Compteur de m2</p>
+
+<%= @displayed_counter.surface %>
+<%= link_to "Modifier le compteur", edit_counter_path(id: 1)  %>
+<br>
+
+<p>Logos</p>
+
+<%= link_to "Ajouter un logo client", new_clientlogo_path %>
+
+<% @current_logos.each do |logo| %>
+  <p> <%= clientlogo.name %> </p>
+  <%= link_to "Editer", edit_clientlogo_path(logo.id) %>
+  <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+<% end %>
+
+
+<br>
+<p>Verbatims</p>
+
+<%= link_to "Ajouter un verbatim", new_verbatim_path %>
+<br>
+<br>
+<br>
+<h2>Réalisations</h2>
+<%= link_to "Ajouter une réalisation", new_realisation_path %>
+<br>
+
+<% @realisations.each do |realisation| %>
+  <p> <%= realisation.title %> </p>
+  <%= link_to "Editer", edit_realisation_path(realisation.id) %>
+  <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+<% end %>
+

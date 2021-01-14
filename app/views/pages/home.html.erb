@@ -1,30 +1,20 @@
-
-
-<div class="banner" data-midnight="white">
+<div id="banner" class="banner" data-midnight="white">
   <%= render 'shared/banner' %>
 </div>
 
 <div class="container" data-midnight="grey">
-<%= link_to "créer banniere", new_banner_path %>
-
 
   <div class="counter-block">
+
     <p> Nous réalisons des fresques artistiques et décoratives pour les collectivités locales, les entreprises, les bailleurs, les aménageurs, les agences de communication, ...
     </p>
 
-    <h3 id="counter">
-
-    </h3>
-
-
-
+    <h3 id="counter" data-value="<%=@displayed_counter.surface%>"> </h3>
 
      <p> de fresques réalisées</p>
   </div>
 
   <div class="logos">
-
-      <%= link_to "Ajouter logo client", new_clientlogo_path %>
 
   <h4> Pour qui nous le faisons </h4>
 
@@ -36,8 +26,6 @@
       <% end %>
     </div>
   </div>
-
-      <%= link_to "Ajouter verbatim", new_verbatim_path %>
 
   <div class="verbatims">
   <h4>  Ils parlent de nous </h4>

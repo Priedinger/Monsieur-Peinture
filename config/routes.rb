@@ -6,12 +6,14 @@ Rails.application.routes.draw do
     get 'services', to: 'pages#services'
     get 'about', to: 'pages#about'
     get 'contact', to: 'pages#contact'
+    get 'admin', to: 'pages#admin'
 
 resources :realisations
 resources :articles
 resources :banners
 resources :clientlogos
 resources :verbatims
+resources :counters
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

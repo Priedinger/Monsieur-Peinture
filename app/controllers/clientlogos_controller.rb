@@ -31,7 +31,7 @@ class ClientlogosController < ApplicationController
 
   end
 
-  def delete
+  def destroy
     @clientlogo = Clientlogo.find(params[:id])
     @clientlogo.destroy
     redirect_to root_path, notice: "Logo client supprimée"

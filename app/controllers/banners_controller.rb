@@ -30,7 +30,7 @@ class BannersController < ApplicationController
 
   end
 
-  def delete
+  def destroy
     @banner = Banner.find(params[:id])
     @banner.destroy
     redirect_to admin_path, notice: "Bannière supprimée"

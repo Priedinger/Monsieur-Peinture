@@ -11,7 +11,9 @@
       </p>
     </div>
     <div class="servicephoto">
-      <%= image_tag "https://picsum.photos/200/300", alt: "Fresques décoratives" %>
+      <%= link_to realisations_path(query:['Fresques décoratives']) do %>
+        <%= image_tag "https://picsum.photos/200/300", alt: 'Fresques décoratives' %>
+      <% end %>
     </div>
   </div>
 
@@ -19,7 +21,9 @@
   <div class="service">
 
     <div class="servicephoto">
-      <%= image_tag "https://picsum.photos/200/300", alt: "Fresques décoratives" %>
+      <%= link_to realisations_path(query:['Art Urbain']) do %>
+        <%= image_tag "https://picsum.photos/200/300", alt: 'Art Urbain' %>
+      <% end %>
     </div>
     <div class="serviceinfos">
       <h2>Art urbain</h2>
@@ -38,10 +42,12 @@
         Nous réalisons des publicités extérieures grand format peintes à la main pour capter l’attention des passants
         Pour qui ? Annonceurs, agences de publicité, agences de communication...
       </p>
-      <%= link_to "Nous contacter", contact_path %>
+        <%= link_to "Nous contacter", contact_path %>
     </div>
     <div class="servicephoto">
-      <%= image_tag "https://picsum.photos/200/300", alt: "Fresques décoratives" %>
+      <%= link_to realisations_path(query:['Publicités peintes']) do %>
+        <%= image_tag "https://picsum.photos/200/300", alt: 'Publicités peintes' %>
+      <% end %>
     </div>
   </div>
 
@@ -49,8 +55,11 @@
   <div class="service">
 
     <div class="servicephoto">
-      <%= image_tag "https://picsum.photos/200/300", alt: "Fresques décoratives" %>
+      <%= link_to realisations_path(query:['Signalétique']) do %>
+        <%= image_tag "https://picsum.photos/200/300", alt: 'Signalétique' %>
+      <% end %>
     </div>
+
     <div class="serviceinfos">
       <h2>Signalétique & enseigne</h2>
       <p>

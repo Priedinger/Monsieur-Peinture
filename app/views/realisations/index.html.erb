@@ -25,7 +25,13 @@
       <div class="realisation">
         <%= link_to realisation_path(realisation) do %>
           <% if realisation.photos.attached? %>
-            <%= cl_image_tag realisation.photos.first.key, crop: :fill %>
+          
+          <% if realisation.photos.first.image? %>
+            <%= cl_image_tag realisation.photos.first.key, crop: :fill %>           
+          <% else %>
+            <%= cl_video_tag realisation.photos.first.key, autoplay: :autoplay, loop: :loop, muted: :muted, crop: :fill %>
+          <% end %>
+          
           <% else %>
             <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
           <% end %>

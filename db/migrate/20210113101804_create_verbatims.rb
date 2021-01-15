@@ -3,6 +3,7 @@ class CreateVerbatims < ActiveRecord::Migration[6.0]
     create_table :verbatims do |t|
       t.string :author
       t.text :citation
+      t.boolean :published, default: false
 
       t.timestamps
     end

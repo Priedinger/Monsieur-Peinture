@@ -11,7 +11,7 @@
           <% if banner.photo.attached? %>
             <p> <%= cl_image_tag banner.photo.key, width: 130, height: 100 %> </p>
           <% else %>
-            <p> <img src="https://picsum.photos/200/300" alt="" style="width: 130px, max-height: 50px"> </p>
+            <p> <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg"> </p>
           <% end %>
           <%= button_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
         </div>
@@ -22,7 +22,7 @@
 
     <div class="admin-counter">
       <%= simple_form_for @displayed_counter do |f| %>
-        <%= f.input :surface, label: "Surface actuelle:" %>
+        <%= f.input :surface, label: "Surface actuelle affichée:" %>
         <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
     <% end %>
 

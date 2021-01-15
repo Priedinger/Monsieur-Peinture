@@ -3,9 +3,9 @@ class RealisationsController < ApplicationController
 
   def index
     if params[:query].present?
-      @realisations = Realisation.where(category: params[:query])
+      @realisations = Realisation.where(category: params[:query], published: true)
     else
-      @realisations = Realisation.all
+      @realisations = Realisation.all.where(published: true)
     end
   end
 
@@ -42,6 +42,6 @@ class RealisationsController < ApplicationController
     private
 
   def realisation_params
-    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, photos: [])
+    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, :published, photos: [])
   end
 end

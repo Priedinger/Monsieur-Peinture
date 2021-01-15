@@ -38,6 +38,6 @@ class VerbatimsController < ApplicationController
     private
 
   def verbatim_params
-    params.require(:verbatim).permit(:author, :citation, :photo)
+    params.require(:verbatim).permit(:author, :citation, :published, :photo)
   end
 end

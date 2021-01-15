@@ -5,7 +5,7 @@ class RealisationsController < ApplicationController
     if params[:query].present?
       @realisations = Realisation.where(category: params[:query], published: true)
     else
-      @realisations = Realisation.all.where(published: true)
+      @realisations = Realisation.all.where(published: true).order(position: :desc)
     end
   end
 
@@ -37,6 +37,12 @@ class RealisationsController < ApplicationController
     @realisation = Realisation.find(params[:id])
     @realisation.destroy
     redirect_to admin_path, notice: "Réalisation supprimée !"
+  end
+
+  def move
+    @realisation = Realisation.find(params[:id])
+    @realisation.insert_at(params[:position].to_i)
+    head :ok
   end
 
     private

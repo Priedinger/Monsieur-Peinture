@@ -59,22 +59,26 @@
 
     <h2>Réalisations</h2>
     <%= link_to "Ajouter une réalisation", new_realisation_path %>
-    <br>
-    <div class="admin-realisations">
-      <% @realisations.each do |realisation| %>
-        <div class="admin-realisation">
-          <p> <%= realisation.title %> </p>
-          <% if realisation.photos.attached? %>
-            <%= cl_image_tag realisation.photos.first.key, crop: :fill %>
-          <% else %>
-            <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
-          <% end %>
-          <%= link_to "Editer", edit_realisation_path(realisation.id) %>
-          <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
-        </div>
+    
+    <table class="table table-bordered table-hover my-3">
+    <thead>
+      <tr>
+        <th scope="col">Move</th>
+        <th scope="col">Title</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody data-controller="drag" data-drag-url="/realisations/:id/move">
+      <% @realisations.order(position: :desc).each do |realisation| %>
+        <tr data-id="<%= realisation.id %>">
+          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+          <td><%= realisation.title %></td>
+          <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
+          <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+        </tr>
       <% end %>
-    </div>
+    </tbody>
+  </table>
+    
   </div>
 </div>
-
-

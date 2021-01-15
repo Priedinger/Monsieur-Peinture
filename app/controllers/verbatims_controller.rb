@@ -1,6 +1,5 @@
 class VerbatimsController < ApplicationController
-
-    skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create, :edit, :update, :delete]
+  skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create, :edit, :update, :delete]
 
   def index
     @verbatims = Verbatim.all
@@ -17,7 +16,7 @@ class VerbatimsController < ApplicationController
   def create
     @verbatim = Verbatim.new(verbatim_params)
     @verbatim.save
-    redirect_to root_path, notice: "Logo client ajouté"
+    redirect_to admin_path, notice: "Logo client ajouté"
   end
 
   def edit
@@ -27,14 +26,13 @@ class VerbatimsController < ApplicationController
   def update
     @verbatim = Verbatim.find(params[:id])
     @verbatim.update(verbatim_params)
-    redirect_to root_path, notice: "Logo client modifiée"
-
+    redirect_to admin_path, notice: "Logo client modifiée"
   end
 
   def destroy
     @verbatim = Verbatim.find(params[:id])
     @verbatim.destroy
-    redirect_to root_path, notice: "Logo client supprimée"
+    redirect_to admin_path, notice: "Logo client supprimée"
   end
 
     private

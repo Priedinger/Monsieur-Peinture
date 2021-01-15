@@ -12,11 +12,19 @@
     <%  @current_banners.each_with_index do |banner, index|%>
       <% if index == 0 %>
         <div class="carousel-item active">
-          <%= cl_image_tag banner.photo.key, class: "d-block w-100"%>
+          <% if banner.photo.attached?%>
+            <%= cl_image_tag banner.photo.key, class: "d-block w-100"%>
+          <% else %>
+            <img src="https://picsum.photos/200/300" alt="">
+          <% end %>
         </div>
       <% else %>
         <div class="carousel-item">
-          <%= cl_image_tag banner.photo.key, class: "d-block w-100"%>
+          <% if banner.photo.attached?%>
+            <%= cl_image_tag banner.photo.key, class: "d-block w-100"%>
+          <% else %>
+            <img src="https://picsum.photos/200/300" alt="">
+          <% end %>
         </div>
       <% end %>
     <% end %>

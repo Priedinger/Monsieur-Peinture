@@ -50,7 +50,7 @@
     <thead>
       <tr>
         <th scope="col">Repositionner</th>
-        <th scope="col">Titres</th>
+        <th scope="col">Client</th>
         <th scope="col">Actions</th>
         <th scope="col">Statut</th>
       </tr>
@@ -59,7 +59,11 @@
       <% @all_clientlogos.order(position: :desc).each do |logo| %>
         <tr data-id="<%= logo.id %>">
           <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-          <td><%= logo.name %></td>
+          <% if logo.photo.attached? %>
+            <td><%= cl_image_tag logo.photo.key, width: 30, height: 30 %></td>
+          <% else %>
+            <td><%= logo.name %></td>
+          <% end %>
           <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
           <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
           <% if logo.published == true %>
@@ -79,7 +83,7 @@
     <thead>
       <tr>
         <th scope="col">Repositionner</th>
-        <th scope="col">Titres</th>
+        <th scope="col">Auteur</th>
         <th scope="col">Actions</th>
         <th scope="col">Statut</th>
       </tr>

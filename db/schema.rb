@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_202144) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position"
-    t.boolean "publicher", default: false
+    t.boolean "published", default: false
   end
 
   create_table "clientlogos", force: :cascade do |t|

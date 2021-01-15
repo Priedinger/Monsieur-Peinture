@@ -45,6 +45,19 @@ class RealisationsController < ApplicationController
     head :ok
   end
 
+  def publish
+    @realisation = Realisation.find(params[:id])
+      if @realisation.published == true
+        @realisation.published = false
+        @realisation.save
+        redirect_to admin_path, notice: "Realisation hors ligne"
+      else
+        @realisation.published = true
+        @realisation.save
+        redirect_to admin_path, notice: "Realisation en ligne"
+      end
+  end
+
     private
 
   def realisation_params

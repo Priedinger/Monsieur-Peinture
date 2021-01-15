@@ -41,6 +41,19 @@ class VerbatimsController < ApplicationController
     head :ok
   end
 
+  def publish
+    @verbatim = Verbatim.find(params[:id])
+      if @verbatim.published == true
+        @verbatim.published = false
+        @verbatim.save
+        redirect_to admin_path, notice: "Verbatim hors ligne"
+      else
+        @verbatim.published = true
+        @verbatim.save
+        redirect_to admin_path, notice: "Verbatim en ligne"
+      end
+  end
+
     private
 
   def verbatim_params

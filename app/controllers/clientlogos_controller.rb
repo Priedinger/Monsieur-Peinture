@@ -38,6 +38,6 @@ class ClientlogosController < ApplicationController
     private
 
   def clientlogo_params
-    params.require(:clientlogo).permit(:name, :photo)
+    params.require(:clientlogo).permit(:name, :published, :photo)
   end
 end

@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @current_banners = Banner.all
-    @current_logos = Clientlogo.all
-    @current_verbatims = Verbatim.all
+    @current_logos = Clientlogo.all.where(published: true)
+    @current_verbatims = Verbatim.all.where(published: true)
     @displayed_counter = Counter.first
   end
 

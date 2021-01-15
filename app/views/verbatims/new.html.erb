@@ -2,6 +2,7 @@
   <%= simple_form_for @verbatim do |f| %>
     <%= f.input :author %>
     <%= f.input :citation, input_html: {rows: 5}%>
+    <%= f.input :published, as: :boolean, label: "Publier", :input_html => { checked: true } %>
     <%= f.input :photo, as: :file %>
     <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
     <%= f.button :submit, "Create", :class => "btn btn-primary w-100" %>

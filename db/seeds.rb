@@ -5,14 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Cleaning database"
 User.destroy_all
 Counter.destroy_all
 
-puts "Creating users"
+puts "Creating users:"
 victor = User.create!(email: "victor@gmail.com", password: "123456")
 puts "Victor created"
 pierre = User.create!(email: "pierre@gmail.com", password: "123456")
 puts "Pierre created"
-puts "Finished"
+puts "Creating counter: 50000 by default"
 
-Counter.create!(surface: '50000')
+counter = Counter.create!(surface: '50000')
+
+if (victor.save && victor.save && counter.save)
+  puts "Finished"
+else
+  puts "Error"
+end

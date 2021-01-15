@@ -13,7 +13,7 @@
           <% else %>
             <p> <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg"> </p>
           <% end %>
-          <%= button_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+          <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
         </div>
       <% end %>
     </div>
@@ -37,7 +37,7 @@
         <div class="admin-logo">
           <p> <%= logo.name %> </p>
           <%= link_to "Editer", edit_clientlogo_path(logo.id) %>
-          <%= button_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+          <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
         </div>
       <% end %>
     </div>
@@ -52,12 +52,10 @@
         <div class="admin-verbatim">
           <p> <%= verbatim.author %> </p>
           <%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
-          <%= button_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+          <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
         </div>
       <% end %>
     </div>
-
-
 
     <h2>Réalisations</h2>
     <%= link_to "Ajouter une réalisation", new_realisation_path %>
@@ -66,9 +64,13 @@
       <% @realisations.each do |realisation| %>
         <div class="admin-realisation">
           <p> <%= realisation.title %> </p>
-          <p> <%= cl_image_tag realisation.photos.first.key, width: 130, height: 100 %> </p>
+          <% if realisation.photos.attached? %>
+            <%= cl_image_tag realisation.photos.first.key, crop: :fill %>
+          <% else %>
+            <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
+          <% end %>
           <%= link_to "Editer", edit_realisation_path(realisation.id) %>
-          <%= button_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+          <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
         </div>
       <% end %>
     </div>

@@ -1,21 +1,21 @@
 import { CountUp } from 'countup.js';
 
-
-const num = document.getElementById('counter').dataset.value;
+const counter = document.getElementById('counter')
 
 
 const options = {
-  separator: '',
+  separator: '',
   suffix: ' m²',
   duration: 10,
 };
 
 const initCountUp = () => {
-
-let start = true
-
+  
+  let start = true
+  
   if (counter) {
     window.addEventListener('scroll', () => {
+      const num = counter.dataset.value;
       if (window.scrollY !== 0) {
         if (start === true){
           const countUp = new CountUp('counter', num, options);

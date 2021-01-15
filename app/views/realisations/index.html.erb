@@ -26,6 +26,7 @@
         <%= link_to realisation_path(realisation) do %>
           <%= cl_image_tag realisation.photos.first.key, crop: :fill %>
         <% end %>
+        <%= realisation.title %>
       </div>
     <% end %>
 

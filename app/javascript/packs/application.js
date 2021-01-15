@@ -33,3 +33,5 @@ document.addEventListener('turbolinks:load', () => {
   initCountUp();
 
 });
+
+import "controllers"

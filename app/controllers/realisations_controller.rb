@@ -2,11 +2,10 @@ class RealisationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create, :edit, :update, :delete]
 
   def index
-
     if params[:query].present?
       @realisations = Realisation.where(category: params[:query])
     else
-      @realisations = Realisation.all
+      @realisations = Realisation.all.order(position: :desc)
     end
   end
 
@@ -41,10 +40,16 @@ class RealisationsController < ApplicationController
     redirect_to admin_path, notice: "Réalisation supprimée !"
   end
 
+  def move
+    @realisation = Realisation.find(params[:id])
+    @realisation.insert_at(params[:position].to_i)
+    head :ok
+  end
+
     private
 
   def realisation_params
-    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, photos: [])
+    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, :position, photos: [])
   end
 
 end

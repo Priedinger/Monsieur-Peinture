@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     get 'contact', to: 'pages#contact'
     get 'admin', to: 'pages#admin'
 
-resources :realisations
+resources :realisations do
+  member do
+    patch :move
+  end
+end
 resources :articles
 resources :banners
 resources :clientlogos

@@ -17,7 +17,11 @@
               <p> <%= verbatim.author %></p>
             </div>
             <div class="verbatim-photo">
-              <%= cl_image_tag verbatim.photo.key %>
+              <% if verbatim.photo.attached? %>
+                <%= cl_image_tag verbatim.photo.key %>
+              <% else %>
+                <img src="https://picsum.photos/200/300" alt="">
+              <% end %>
             </div>
           </div>
         </div>
@@ -29,10 +33,14 @@
               <p> <%= verbatim.author %></p>
             </div>
             <div class="verbatim-photo">
-              <%= cl_image_tag verbatim.photo.key %>
+              <% if verbatim.photo.attached? %>
+                <%= cl_image_tag verbatim.photo.key %>
+              <% else %>
+                <img src="https://picsum.photos/200/300" alt="">
+              <% end %>
             </div>
           </div>
-     </div>
+        </div>
       <% end %>
     <% end %>
   </div><!--

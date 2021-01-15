@@ -1,45 +1,78 @@
+<div class="container">
+  <div class="admin-page">
+    <h2>Page d'accueil</h2>
+    <p>Photos de la bannière</p>
 
-<h2>Page d'accueil</h2>
-<p>Photos de la bannière</p>
+      <%= link_to "Ajouter une photo à la bannière", new_banner_path %>
 
-<%= link_to "Ajouter une photo à la bannière", new_banner_path %>
-<% @current_banners.each do |banner| %>
-  <p> <%= cl_image_tag banner.photo.key %> </p>
-  <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
-<% end %>
+    <div class="admin-banners">
+      <% @current_banners.each do |banner| %>
+        <div class="admin-banner">
+          <% if banner.photo.attached? %>
+            <p> <%= cl_image_tag banner.photo.key, width: 130, height: 100 %> </p>
+          <% else %>
+            <p> <img src="https://picsum.photos/200/300" alt="" style="width: 130px, max-height: 50px"> </p>
+          <% end %>
+          <%= button_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+        </div>
+      <% end %>
+    </div>
 
-<br>
-<p>Compteur de m2</p>
+    <h3>Compteur de m²:</h3>
 
-<%= @displayed_counter.surface %>
-<%= link_to "Modifier le compteur", edit_counter_path(id: 1)  %>
-<br>
+    <div class="admin-counter">
+      <%= simple_form_for @displayed_counter do |f| %>
+        <%= f.input :surface, label: "Surface actuelle:" %>
+        <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
+    <% end %>
 
-<p>Logos</p>
+    </div>
 
-<%= link_to "Ajouter un logo client", new_clientlogo_path %>
+    <h3>Logos</h3>
 
-<% @current_logos.each do |logo| %>
-  <p> <%= clientlogo.name %> </p>
-  <%= link_to "Editer", edit_clientlogo_path(logo.id) %>
-  <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
-<% end %>
+    <%= link_to "Ajouter un logo client", new_clientlogo_path %>
+
+    <div class="admin-logos">
+      <% @current_logos.each do |logo| %>
+        <div class="admin-logo">
+          <p> <%= logo.name %> </p>
+          <%= link_to "Editer", edit_clientlogo_path(logo.id) %>
+          <%= button_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
+    <h3>Verbatims</h3>
+
+    <%= link_to "Ajouter un verbatim", new_verbatim_path %>
+
+    <div class="admin-verbatims">
+      <% @current_verbatims.each do |verbatim| %>
+        <div class="admin-verbatim">
+          <p> <%= verbatim.author %> </p>
+          <%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
+          <%= button_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+        </div>
+      <% end %>
+    </div>
 
 
-<br>
-<p>Verbatims</p>
 
-<%= link_to "Ajouter un verbatim", new_verbatim_path %>
-<br>
-<br>
-<br>
-<h2>Réalisations</h2>
-<%= link_to "Ajouter une réalisation", new_realisation_path %>
-<br>
+    <h2>Réalisations</h2>
+    <%= link_to "Ajouter une réalisation", new_realisation_path %>
+    <br>
+    <div class="admin-realisations">
+      <% @realisations.each do |realisation| %>
+        <div class="admin-realisation">
+          <p> <%= realisation.title %> </p>
+          <p> <%= cl_image_tag realisation.photos.first.key, width: 130, height: 100 %> </p>
+          <%= link_to "Editer", edit_realisation_path(realisation.id) %>
+          <%= button_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% @realisations.each do |realisation| %>
-  <p> <%= realisation.title %> </p>
-  <%= link_to "Editer", edit_realisation_path(realisation.id) %>
-  <%= button_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
-<% end %>
 

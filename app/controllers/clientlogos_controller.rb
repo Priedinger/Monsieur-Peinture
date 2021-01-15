@@ -1,6 +1,5 @@
 class ClientlogosController < ApplicationController
-    skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create, :edit, :update, :delete]
-
+  skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create, :edit, :update, :delete]
 
   def index
     @clientlogos = Clientlogo.all
@@ -17,7 +16,7 @@ class ClientlogosController < ApplicationController
   def create
     @clientlogo = Clientlogo.new(clientlogo_params)
     @clientlogo.save
-    redirect_to root_path, notice: "Logo client ajouté"
+    redirect_to admin_path, notice: "Logo client ajouté"
   end
 
   def edit
@@ -27,14 +26,13 @@ class ClientlogosController < ApplicationController
   def update
     @clientlogo = Clientlogo.find(params[:id])
     @clientlogo.update(clientlogo_params)
-    redirect_to root_path, notice: "Logo client modifiée"
-
+    redirect_to admin_path, notice: "Logo client modifiée"
   end
 
   def destroy
     @clientlogo = Clientlogo.find(params[:id])
     @clientlogo.destroy
-    redirect_to root_path, notice: "Logo client supprimée"
+    redirect_to admin_path, notice: "Logo client supprimée"
   end
 
     private

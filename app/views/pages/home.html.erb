@@ -21,7 +21,11 @@
     <div class="logos-grid">
       <% @current_logos.each do |logo| %>
         <div class="logo">
-          <%= cl_image_tag logo.photo.key, class: "d-block w-100"%>
+          <% if logo.photo.attached?%>
+            <%= cl_image_tag logo.photo.key, class: "d-block w-100"%>
+          <% else %>
+            <img src="https://picsum.photos/200/300" alt="">
+          <% end %>
         </div>
       <% end %>
     </div>

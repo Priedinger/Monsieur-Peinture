@@ -49,7 +49,7 @@ class RealisationsController < ApplicationController
     private
 
   def realisation_params
-    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, :position, photos: [])
+    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, photos: [])
   end
 
 end

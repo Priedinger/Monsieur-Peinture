@@ -35,6 +35,19 @@ class ArticlesController < ApplicationController
     redirect_to admin_path, notice: "Article supprimée"
   end
 
+  def publish
+    @article = Article.find(params[:id])
+    if @article.published == true
+      @article.published = false
+      @article.save
+      redirect_to admin_path, notice: "Article hors ligne"
+    else
+      @article.published = true
+      @article.save
+      redirect_to admin_path, notice: "Article en ligne"
+    end
+  end
+
     private
 
   def article_params

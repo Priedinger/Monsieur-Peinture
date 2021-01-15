@@ -41,6 +41,19 @@ class ClientlogosController < ApplicationController
     head :ok
   end
 
+  def publish
+    @clientlogo = Clientlogo.find(params[:id])
+    if @clientlogo.published == true
+      @clientlogo.published = false
+      @clientlogo.save
+      redirect_to admin_path, notice: "Logo hors ligne"
+    else
+      @clientlogo.published = true
+      @clientlogo.save
+      redirect_to admin_path, notice: "Logo en ligne"
+    end
+  end
+
     private
 
   def clientlogo_params

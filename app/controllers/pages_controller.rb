@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home , :services, :about, :contact]
 
   def home
-    @current_banners = Banner.all
+    @current_banners = Banner.all.where(published: true)
     @current_logos = Clientlogo.all.where(published: true)
     @current_verbatims = Verbatim.all.where(published: true)
     @displayed_counter = Counter.first

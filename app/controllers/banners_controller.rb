@@ -23,6 +23,19 @@ class BannersController < ApplicationController
     head :ok
   end
 
+  def publish
+    @banner = Banner.find(params[:id])
+    if @banner.published == true
+      @banner.published = false
+      @banner.save
+      redirect_to admin_path, notice: "Photo hors ligne"
+    else
+      @banner.published = true
+      @banner.save
+      redirect_to admin_path, notice: "Photo en ligne"
+    end
+  end
+
     private
 
   def banner_params

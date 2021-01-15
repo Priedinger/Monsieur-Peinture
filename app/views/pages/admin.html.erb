@@ -12,6 +12,7 @@
         <th scope="col">Repositionner</th>
         <th scope="col">Titres</th>
         <th scope="col">Actions</th>
+        <th scope="col">Statut</th>
       </tr>
     </thead>
     <tbody data-controller="drag" data-drag-url="/banners/:id/move">
@@ -21,11 +22,15 @@
           <td><%= banner.title %></td>
           <td><%= link_to "Editer", edit_banner_path(banner.id) %>
           <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+          <% if banner.published == true %>
+            <td> <%= link_to "Mettre hors ligne", publish_banner_path(banner.id), method: :patch %></td>
+          <% else %>
+            <td> <%= link_to "Mettre en ligne", publish_banner_path(banner.id), method: :patch %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
-
 
     <h3>Compteur de m²:</h3>
 
@@ -47,6 +52,7 @@
         <th scope="col">Repositionner</th>
         <th scope="col">Titres</th>
         <th scope="col">Actions</th>
+        <th scope="col">Statut</th>
       </tr>
     </thead>
     <tbody data-controller="drag" data-drag-url="/clientlogos/:id/move">
@@ -56,6 +62,11 @@
           <td><%= logo.name %></td>
           <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
           <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+          <% if logo.published == true %>
+            <td> <%= link_to "Mettre hors ligne", publish_clientlogo_path(logo.id), method: :patch %></td>
+          <% else %>
+            <td> <%= link_to "Mettre en ligne", publish_clientlogo_path(logo.id), method: :patch %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
@@ -70,6 +81,7 @@
         <th scope="col">Repositionner</th>
         <th scope="col">Titres</th>
         <th scope="col">Actions</th>
+        <th scope="col">Statut</th>
       </tr>
     </thead>
     <tbody data-controller="drag" data-drag-url="/verbatims/:id/move">
@@ -79,11 +91,15 @@
           <td><%= verbatim.author %></td>
           <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
           <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
-        </tr>
+          <% if verbatim.published == true %>
+            <td> <%= link_to "Mettre hors ligne", publish_verbatim_path(verbatim.id), method: :patch %></td>
+          <% else %>
+            <td> <%= link_to "Mettre en ligne", publish_verbatim_path(verbatim.id), method: :patch %></td>
+          <% end %>
+          </tr>
       <% end %>
     </tbody>
   </table>
-
 
     <h2>Réalisations</h2>
     <%= link_to "Ajouter une réalisation", new_realisation_path %>
@@ -94,6 +110,7 @@
         <th scope="col">Repositionner</th>
         <th scope="col">Titres</th>
         <th scope="col">Actions</th>
+        <th scope="col">Statut</th>
       </tr>
     </thead>
     <tbody data-controller="drag" data-drag-url="/realisations/:id/move">
@@ -103,6 +120,12 @@
           <td><%= realisation.title %></td>
           <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
           <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+          <% if realisation.published == true %>
+            <td> <%= link_to "Mettre hors ligne", publish_realisation_path(realisation.id), method: :patch %></td>
+          <% else %>
+            <td> <%= link_to "Mettre en ligne", publish_realisation_path(realisation.id), method: :patch %></td>
+          <% end %>
+          </tr>
         </tr>
       <% end %>
     </tbody>
@@ -118,6 +141,7 @@
         <th scope="col">Repositionner</th>
         <th scope="col">Titres</th>
         <th scope="col">Actions</th>
+        <th scope="col">Statut</th>
       </tr>
     </thead>
     <tbody data-controller="drag" data-drag-url="/articles/:id/move">
@@ -127,13 +151,14 @@
           <td><%= article.title %></td>
           <td><%= link_to "Editer", edit_article_path(article.id) %>
           <%= link_to "Supprimer", article_path(article.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+           <% if article.published == true %>
+            <td> <%= link_to "Mettre hors ligne", publish_article_path(article.id), method: :patch %></td>
+          <% else %>
+            <td> <%= link_to "Mettre en ligne", publish_article_path(article.id), method: :patch %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-
-
-
   </div>
 </div>

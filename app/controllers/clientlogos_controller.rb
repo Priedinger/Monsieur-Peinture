@@ -35,6 +35,12 @@ class ClientlogosController < ApplicationController
     redirect_to admin_path, notice: "Logo client supprimée"
   end
 
+  def move
+    @clientlogo = Clientlogo.find(params[:id])
+    @clientlogo.insert_at(params[:position].to_i)
+    head :ok
+  end
+
     private
 
   def clientlogo_params

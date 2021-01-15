@@ -35,6 +35,12 @@ class VerbatimsController < ApplicationController
     redirect_to admin_path, notice: "Logo client supprimée"
   end
 
+  def move
+    @verbatim = Verbatim.find(params[:id])
+    @verbatim.insert_at(params[:position].to_i)
+    head :ok
+  end
+
     private
 
   def verbatim_params

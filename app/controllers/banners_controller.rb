@@ -1,14 +1,6 @@
 class BannersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :update, :edit, :delete ]
 
-  def index
-    @banners = Banner.all
-  end
-
-  def show
-    @banner = Banner.find(params[:id])
-  end
-
   def new
     @banner = Banner.new
   end
@@ -19,20 +11,16 @@ class BannersController < ApplicationController
     redirect_to admin_path, notice: "Bannière crée"
   end
 
-  def edit
-    @banner = Banner.find(params[:id])
-  end
-
-  def update
-    @banner = Banner.find(params[:id])
-    @banner.update(banner_params)
-    redirect_to admin_path, notice: "Bannière modifiée"
-  end
-
   def destroy
     @banner = Banner.find(params[:id])
     @banner.destroy
     redirect_to admin_path, notice: "Bannière supprimée"
+  end
+
+  def move
+    @banner = Banner.find(params[:id])
+    @banner.insert_at(params[:position].to_i)
+    head :ok
   end
 
     private

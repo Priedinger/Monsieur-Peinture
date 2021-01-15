@@ -13,10 +13,26 @@ resources :realisations do
     patch :move
   end
 end
-resources :articles
-resources :banners
-resources :clientlogos
-resources :verbatims
+resources :articles do
+  member do
+    patch :move
+  end
+end
+resources :banners do
+  member do
+    patch :move
+  end
+end
+resources :clientlogos do
+  member do
+    patch :move
+  end
+end
+resources :verbatims do
+  member do
+    patch :move
+  end
+end
 resources :counters
 
 

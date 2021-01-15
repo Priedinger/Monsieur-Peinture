@@ -5,18 +5,27 @@
 
       <%= link_to "Ajouter une photo à la bannière", new_banner_path %>
 
-    <div class="admin-banners">
-      <% @current_banners.each do |banner| %>
-        <div class="admin-banner">
-          <% if banner.photo.attached? %>
-            <p> <%= cl_image_tag banner.photo.key, width: 130, height: 100 %> </p>
-          <% else %>
-            <p> <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg"> </p>
-          <% end %>
-          <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
-        </div>
+
+    <table class="table table-bordered table-hover my-3">
+    <thead>
+      <tr>
+        <th scope="col">Repositionner</th>
+        <th scope="col">Titres</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody data-controller="drag" data-drag-url="/banners/:id/move">
+      <% @all_banners.order(position: :desc).each do |banner| %>
+        <tr data-id="<%= banner.id %>">
+          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+          <td><%= banner.title %></td>
+          <td><%= link_to "Editer", edit_banner_path(banner.id) %>
+          <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+        </tr>
       <% end %>
-    </div>
+    </tbody>
+  </table>
+
 
     <h3>Compteur de m²:</h3>
 
@@ -32,44 +41,63 @@
 
     <%= link_to "Ajouter un logo client", new_clientlogo_path %>
 
-    <div class="admin-logos">
-      <% @current_logos.each do |logo| %>
-        <div class="admin-logo">
-          <p> <%= logo.name %> </p>
-          <%= link_to "Editer", edit_clientlogo_path(logo.id) %>
-          <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
-        </div>
-      <% end %>
-    </div>
-
-    <br>
-    <h3>Verbatims</h3>
-
-    <%= link_to "Ajouter un verbatim", new_verbatim_path %>
-
-    <div class="admin-verbatims">
-      <% @current_verbatims.each do |verbatim| %>
-        <div class="admin-verbatim">
-          <p> <%= verbatim.author %> </p>
-          <%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
-          <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %>
-        </div>
-      <% end %>
-    </div>
-
-    <h2>Réalisations</h2>
-    <%= link_to "Ajouter une réalisation", new_realisation_path %>
-    
     <table class="table table-bordered table-hover my-3">
     <thead>
       <tr>
-        <th scope="col">Move</th>
-        <th scope="col">Title</th>
+        <th scope="col">Repositionner</th>
+        <th scope="col">Titres</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody data-controller="drag" data-drag-url="/clientlogos/:id/move">
+      <% @all_clientlogos.order(position: :desc).each do |logo| %>
+        <tr data-id="<%= logo.id %>">
+          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+          <td><%= logo.name %></td>
+          <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
+          <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+    <h3>Verbatims</h3>
+    <%= link_to "Ajouter un verbatim", new_verbatim_path %>
+
+    <table class="table table-bordered table-hover my-3">
+    <thead>
+      <tr>
+        <th scope="col">Repositionner</th>
+        <th scope="col">Titres</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody data-controller="drag" data-drag-url="/verbatims/:id/move">
+      <% @all_verbatims.order(position: :desc).each do |verbatim| %>
+        <tr data-id="<%= verbatim.id %>">
+          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+          <td><%= verbatim.author %></td>
+          <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
+          <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+    <h2>Réalisations</h2>
+    <%= link_to "Ajouter une réalisation", new_realisation_path %>
+
+    <table class="table table-bordered table-hover my-3">
+    <thead>
+      <tr>
+        <th scope="col">Repositionner</th>
+        <th scope="col">Titres</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody data-controller="drag" data-drag-url="/realisations/:id/move">
-      <% @realisations.order(position: :desc).each do |realisation| %>
+      <% @all_realisations.order(position: :desc).each do |realisation| %>
         <tr data-id="<%= realisation.id %>">
           <th scope="row"><i class="fas fa-arrows-alt"></i></th>
           <td><%= realisation.title %></td>
@@ -79,6 +107,33 @@
       <% end %>
     </tbody>
   </table>
-    
+
+
+    <h2>Articles</h2>
+    <%= link_to "Ajouter un article", new_article_path %>
+
+    <table class="table table-bordered table-hover my-3">
+    <thead>
+      <tr>
+        <th scope="col">Repositionner</th>
+        <th scope="col">Titres</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody data-controller="drag" data-drag-url="/articles/:id/move">
+      <% @all_articles.order(position: :desc).each do |article| %>
+        <tr data-id="<%= article.id %>">
+          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+          <td><%= article.title %></td>
+          <td><%= link_to "Editer", edit_article_path(article.id) %>
+          <%= link_to "Supprimer", article_path(article.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+
   </div>
 </div>

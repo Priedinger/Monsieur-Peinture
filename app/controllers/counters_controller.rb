@@ -9,7 +9,7 @@ class CountersController < ApplicationController
   def update
     @counter = Counter.find(params[:id])
     @counter.update(counter_params)
-    redirect_to root_path
+    redirect_to admin_path
   end
 
     private

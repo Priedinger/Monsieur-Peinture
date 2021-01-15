@@ -3,14 +3,14 @@ class RealisationsController < ApplicationController
 
   def index
     if params[:query].present?
-      @realisations = Realisation.where(category: params[:query])
+      @realisations = Realisation.where(category: params[:query], published: true)
     else
-      @realisations = Realisation.all.order(position: :desc)
+      @realisations = Realisation.all.where(published: true).order(position: :desc)
     end
   end
 
   def show
-      @realisation = Realisation.find(params[:id])
+    @realisation = Realisation.find(params[:id])
   end
 
   def new
@@ -20,7 +20,7 @@ class RealisationsController < ApplicationController
   def create
     @realisation = Realisation.new(realisation_params)
     @realisation.save
-    redirect_to realisations_path, notice: "Réalisation crée"
+    redirect_to admin_path, notice: "Réalisation crée"
   end
 
   def edit
@@ -31,7 +31,6 @@ class RealisationsController < ApplicationController
     @realisation = Realisation.find(params[:id])
     @realisation.update(realisation_params)
     redirect_to admin_path, notice: "Réalisation editée"
-
   end
 
   def destroy
@@ -49,7 +48,6 @@ class RealisationsController < ApplicationController
     private
 
   def realisation_params
-    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, photos: [])
+    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, :published, photos: [])
   end
-
 end

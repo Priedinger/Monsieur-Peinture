@@ -16,7 +16,7 @@ class BannersController < ApplicationController
   def create
     @banner = Banner.new(banner_params)
     @banner.save
-    redirect_to root_path, notice: "Bannière crée"
+    redirect_to admin_path, notice: "Bannière crée"
   end
 
   def edit
@@ -27,7 +27,6 @@ class BannersController < ApplicationController
     @banner = Banner.find(params[:id])
     @banner.update(banner_params)
     redirect_to admin_path, notice: "Bannière modifiée"
-
   end
 
   def destroy

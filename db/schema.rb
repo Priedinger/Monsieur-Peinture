@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_114319) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.boolean "published", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_114319) do
 
   create_table "clientlogos", force: :cascade do |t|
     t.string "name"
+    t.boolean "published", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_114319) do
     t.string "duration"
     t.string "photo_credits"
     t.text "description"
+    t.boolean "published", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position"
@@ -92,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_114319) do
   create_table "verbatims", force: :cascade do |t|
     t.string "author"
     t.text "citation"
+    t.boolean "published", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

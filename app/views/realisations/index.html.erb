@@ -24,7 +24,11 @@
     <% @realisations.each do |realisation| %>
       <div class="realisation">
         <%= link_to realisation_path(realisation) do %>
-          <%= cl_image_tag realisation.photos.first.key, crop: :fill %>
+          <% if realisation.photos.attached? %>
+            <%= cl_image_tag realisation.photos.first.key, crop: :fill %>
+          <% else %>
+            <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
+          <% end %>
         <% end %>
         <%= realisation.title %>
       </div>

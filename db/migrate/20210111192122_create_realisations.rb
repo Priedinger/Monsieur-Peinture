@@ -11,6 +11,7 @@ class CreateRealisations < ActiveRecord::Migration[6.0]
       t.string :duration
       t.string :photo_credits
       t.text :description
+      t.boolean :published, default: false
 
       t.timestamps
     end

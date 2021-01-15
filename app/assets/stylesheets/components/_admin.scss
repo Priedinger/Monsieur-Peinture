@@ -1,0 +1,35 @@
+.admin-page{
+  a{
+    max-width: 50vh;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 1vh;
+  }
+}
+
+.admin-banners{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.admin-counter{
+  display: flex;
+  p {
+    margin: 0;
+  }
+}
+
+.admin-logos{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.admin-verbatims{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.admin-realisations{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}

@@ -21,7 +21,11 @@
     <div class="logos-grid">
       <% @current_logos.each do |logo| %>
         <div class="logo">
-          <%= cl_image_tag logo.photo.key, class: "d-block w-100"%>
+          <% if logo.photo.attached?%>
+            <%= cl_image_tag logo.photo.key, class: "d-block w-100"%>
+          <% else %>
+            <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
+          <% end %>
         </div>
       <% end %>
     </div>

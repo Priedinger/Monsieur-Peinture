@@ -14,6 +14,7 @@ const initCountUp = () => {
   let start = true
   
   if (counter) {
+    const num = counter.dataset.value;
     window.addEventListener('scroll', () => {
       const num = counter.dataset.value;
       if (window.scrollY !== 0) {

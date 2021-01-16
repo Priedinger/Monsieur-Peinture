@@ -3,7 +3,7 @@
 
     <h3 id="admin-banners"> Photos de la bannière </h3>
 
-    <div id="admin-table-banners">
+    <div class="hidden-admin-table">
           <%= link_to "Ajouter une photo à la bannière", new_banner_path %>
         <table class="table table-bordered table-hover my-3" >
         <thead>
@@ -35,7 +35,7 @@
 
     <h3 id="admin-counter">Compteur de m²</h3>
 
-    <div id="admin-table-counter">
+    <div class="hidden-admin-table">
       <%= simple_form_for @displayed_counter do |f| %>
         <%= f.input :surface, label: "Surface actuelle affichée:" %>
         <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
@@ -44,7 +44,7 @@
     </div>
 
     <h3 id="admin-logos">Logos</h3>
-    <div id="admin-table-logos">
+    <div class="hidden-admin-table">
       <%= link_to "Ajouter un logo client", new_clientlogo_path %>
       <table class="table table-bordered table-hover my-3">
       <thead>
@@ -79,7 +79,7 @@
 
     <h3 id="admin-verbatims">Verbatims</h3>
 
-    <div id="admin-table-verbatims">
+    <div class="hidden-admin-table">
       <%= link_to "Ajouter un verbatim", new_verbatim_path %>
       <table class="table table-bordered table-hover my-3">
       <thead>
@@ -109,7 +109,7 @@
   </div>
 
     <h3 id="admin-realisations">Réalisations</h3>
-    <div id="admin-table-realisations">
+    <div class="hidden-admin-table">
       <%= link_to "Ajouter une réalisation", new_realisation_path %>
       <table class="table table-bordered table-hover my-3" >
         <thead>
@@ -139,7 +139,7 @@
     </div>
 
     <h3 id="admin-articles">Articles</h3>
-    <div id="admin-table-articles">
+    <div class="hidden-admin-table">
       <%= link_to "Ajouter un article", new_article_path %>
       <table class="table table-bordered table-hover my-3">
         <thead>

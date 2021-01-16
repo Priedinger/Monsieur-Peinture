@@ -1,10 +1,10 @@
+
 <div class="container">
-  <%= simple_form_for @article do |f| %>
-    <%= f.input :title, label: "Titre de l'article" %>
-    <%= f.input :content, as: :rich_text_area, label: "Contenu de l'article" %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true, id: 'photo-input' } %>
-    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    <%= f.button :submit, "Ajouter l'article", :class => "btn btn-primary w-100" %>
+  <%= form_with scope: :article, url: @article, local: true do |form| %>
+    <%= form.label "Titire de l'article" %><br>
+    <%= form.text_field :title %> <br>
+    <%= form.label "Contenu de l'article" %><br>
+    <%= form.rich_text_area :content %>
+    <%= form.submit value: "Sauvegarder", class: "btn btn-primary"%>
   <% end %>
 </div>
-

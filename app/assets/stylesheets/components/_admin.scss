@@ -7,29 +7,6 @@
   }
 }
 
-.admin-banners{
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-}
-
-.admin-counter{
-  display: flex;
-  p {
-    margin: 0;
-  }
-}
-
-.admin-logos{
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-}
-
-.admin-verbatims{
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-}
-
-.admin-realisations{
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+.hidden{
+  display: block;
 }

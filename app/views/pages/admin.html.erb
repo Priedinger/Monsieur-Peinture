@@ -1,40 +1,41 @@
 <div class="container">
   <div class="admin-page">
-    <h2>Page d'accueil</h2>
-    <p>Photos de la bannière</p>
 
-      <%= link_to "Ajouter une photo à la bannière", new_banner_path %>
+    <h3 id="admin-banners"> Photos de la bannière </h3>
 
-
-    <table class="table table-bordered table-hover my-3">
-    <thead>
-      <tr>
-        <th scope="col">Repositionner</th>
-        <th scope="col">Titres</th>
-        <th scope="col">Actions</th>
-        <th scope="col">Statut</th>
-      </tr>
-    </thead>
-    <tbody data-controller="drag" data-drag-url="/banners/:id/move">
-      <% @all_banners.order(position: :desc).each do |banner| %>
-        <tr data-id="<%= banner.id %>">
-          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-          <td><%= banner.title %></td>
-          <td><%= link_to "Editer", edit_banner_path(banner.id) %>
-          <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
-          <% if banner.published == true %>
-            <td> <%= link_to "En ligne", publish_banner_path(banner.id), method: :patch, id: "published-off" %></td>
-          <% else %>
-            <td> <%= link_to "Hors ligne", publish_banner_path(banner.id), method: :patch, id: "published-on" %></td>
+    <div id="admin-table-banners">
+          <%= link_to "Ajouter une photo à la bannière", new_banner_path %>
+        <table class="table table-bordered table-hover my-3" >
+        <thead>
+          <tr>
+            <th scope="col">Repositionner</th>
+            <th scope="col">Titres</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Statut</th>
+          </tr>
+        </thead>
+        <tbody data-controller="drag" data-drag-url="/banners/:id/move">
+          <% @all_banners.order(position: :desc).each do |banner| %>
+            <tr data-id="<%= banner.id %>">
+              <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+              <td><%= banner.title %></td>
+              <td><%= link_to "Editer", edit_banner_path(banner.id) %>
+              <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+              <% if banner.published == true %>
+                <td> <%= link_to "En ligne", publish_banner_path(banner.id), method: :patch, id: "published-off" %></td>
+              <% else %>
+                <td> <%= link_to "Hors ligne", publish_banner_path(banner.id), method: :patch, id: "published-on" %></td>
+              <% end %>
+            </tr>
           <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        </tbody>
+      </table>
 
-    <h3>Compteur de m²:</h3>
+   </div>
 
-    <div class="admin-counter">
+    <h3 id="admin-counter">Compteur de m²</h3>
+
+    <div id="admin-table-counter">
       <%= simple_form_for @displayed_counter do |f| %>
         <%= f.input :surface, label: "Surface actuelle affichée:" %>
         <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
@@ -42,127 +43,129 @@
 
     </div>
 
-    <h3>Logos</h3>
-
-    <%= link_to "Ajouter un logo client", new_clientlogo_path %>
-
-    <table class="table table-bordered table-hover my-3">
-    <thead>
-      <tr>
-        <th scope="col">Repositionner</th>
-        <th scope="col">Client</th>
-        <th scope="col">Actions</th>
-        <th scope="col">Statut</th>
-      </tr>
-    </thead>
-    <tbody data-controller="drag" data-drag-url="/clientlogos/:id/move">
-      <% @all_clientlogos.order(position: :desc).each do |logo| %>
-        <tr data-id="<%= logo.id %>">
-          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-          <% if logo.photo.attached? %>
-            <td><%= cl_image_tag logo.photo.key, width: 30, height: 30 %></td>
-          <% else %>
-            <td><%= logo.name %></td>
-          <% end %>
-          <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
-          <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
-          <% if logo.published == true %>
-            <td> <%= link_to "En ligne", publish_clientlogo_path(logo.id), method: :patch, id: "published-off" %></td>
-          <% else %>
-            <td> <%= link_to "Hors ligne", publish_clientlogo_path(logo.id), method: :patch, id: "published-on" %></td>
-          <% end %>
+    <h3 id="admin-logos">Logos</h3>
+    <div id="admin-table-logos">
+      <%= link_to "Ajouter un logo client", new_clientlogo_path %>
+      <table class="table table-bordered table-hover my-3">
+      <thead>
+        <tr>
+          <th scope="col">Repositionner</th>
+          <th scope="col">Client</th>
+          <th scope="col">Actions</th>
+          <th scope="col">Statut</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-    <h3>Verbatims</h3>
-    <%= link_to "Ajouter un verbatim", new_verbatim_path %>
-
-    <table class="table table-bordered table-hover my-3">
-    <thead>
-      <tr>
-        <th scope="col">Repositionner</th>
-        <th scope="col">Auteur</th>
-        <th scope="col">Actions</th>
-        <th scope="col">Statut</th>
-      </tr>
-    </thead>
-    <tbody data-controller="drag" data-drag-url="/verbatims/:id/move">
-      <% @all_verbatims.order(position: :desc).each do |verbatim| %>
-        <tr data-id="<%= verbatim.id %>">
-          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-          <td><%= verbatim.author %></td>
-          <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
-          <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
-          <% if verbatim.published == true %>
-            <td> <%= link_to "En ligne", publish_verbatim_path(verbatim.id), method: :patch, id: "published-off" %></td>
-          <% else %>
-            <td> <%= link_to "Hors ligne", publish_verbatim_path(verbatim.id), method: :patch, id: "published-on" %></td>
-          <% end %>
+      </thead>
+      <tbody data-controller="drag" data-drag-url="/clientlogos/:id/move">
+        <% @all_clientlogos.order(position: :desc).each do |logo| %>
+          <tr data-id="<%= logo.id %>">
+            <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+            <% if logo.photo.attached? %>
+              <td><%= cl_image_tag logo.photo.key, width: 30, height: 30 %></td>
+            <% else %>
+              <td><%= logo.name %></td>
+            <% end %>
+            <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
+            <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+            <% if logo.published == true %>
+              <td> <%= link_to "En ligne", publish_clientlogo_path(logo.id), method: :patch, id: "published-off" %></td>
+            <% else %>
+              <td> <%= link_to "Hors ligne", publish_clientlogo_path(logo.id), method: :patch, id: "published-on" %></td>
+            <% end %>
           </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-    <h2>Réalisations</h2>
-    <%= link_to "Ajouter une réalisation", new_realisation_path %>
+    <h3 id="admin-verbatims">Verbatims</h3>
 
-    <table class="table table-bordered table-hover my-3">
-    <thead>
-      <tr>
-        <th scope="col">Repositionner</th>
-        <th scope="col">Titres</th>
-        <th scope="col">Actions</th>
-        <th scope="col">Statut</th>
-      </tr>
-    </thead>
-    <tbody data-controller="drag" data-drag-url="/realisations/:id/move">
-      <% @all_realisations.order(position: :desc).each do |realisation| %>
-        <tr data-id="<%= realisation.id %>">
-          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-          <td><%= realisation.title %></td>
-          <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
-          <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
-          <% if realisation.published == true %>
-            <td> <%= link_to "En ligne", publish_realisation_path(realisation.id), method: :patch, id: "published-off" %></td>
-          <% else %>
-            <td> <%= link_to "Hors ligne", publish_realisation_path(realisation.id), method: :patch, id: "published-on" %></td>
-          <% end %>
+    <div id="admin-table-verbatims">
+      <%= link_to "Ajouter un verbatim", new_verbatim_path %>
+      <table class="table table-bordered table-hover my-3">
+      <thead>
+        <tr>
+          <th scope="col">Repositionner</th>
+          <th scope="col">Auteur</th>
+          <th scope="col">Actions</th>
+          <th scope="col">Statut</th>
+        </tr>
+      </thead>
+      <tbody data-controller="drag" data-drag-url="/verbatims/:id/move">
+        <% @all_verbatims.order(position: :desc).each do |verbatim| %>
+          <tr data-id="<%= verbatim.id %>">
+            <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+            <td><%= verbatim.author %></td>
+            <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
+            <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+            <% if verbatim.published == true %>
+              <td> <%= link_to "En ligne", publish_verbatim_path(verbatim.id), method: :patch, id: "published-off" %></td>
+            <% else %>
+              <td> <%= link_to "Hors ligne", publish_verbatim_path(verbatim.id), method: :patch, id: "published-on" %></td>
+            <% end %>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+    <h3 id="admin-realisations">Réalisations</h3>
+    <div id="admin-table-realisations">
+      <%= link_to "Ajouter une réalisation", new_realisation_path %>
+      <table class="table table-bordered table-hover my-3" >
+        <thead>
+          <tr>
+            <th scope="col">Repositionner</th>
+            <th scope="col">Titres</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Statut</th>
           </tr>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-
-    <h2>Articles</h2>
-    <%= link_to "Ajouter un article", new_article_path %>
-
-    <table class="table table-bordered table-hover my-3">
-    <thead>
-      <tr>
-        <th scope="col">Repositionner</th>
-        <th scope="col">Titres</th>
-        <th scope="col">Actions</th>
-        <th scope="col">Statut</th>
-      </tr>
-    </thead>
-    <tbody data-controller="drag" data-drag-url="/articles/:id/move">
-      <% @all_articles.order(position: :desc).each do |article| %>
-        <tr data-id="<%= article.id %>">
-          <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-          <td><%= article.title %></td>
-          <td><%= link_to "Editer", edit_article_path(article.id) %>
-          <%= link_to "Supprimer", article_path(article.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
-           <% if article.published == true %>
-            <td> <%= link_to "En ligne", publish_article_path(article.id), method: :patch, id: "published-off" %></td>
-          <% else %>
-            <td> <%= link_to "Hors ligne", publish_article_path(article.id), method: :patch, id: "published-on" %></td>
+        </thead>
+        <tbody data-controller="drag" data-drag-url="/realisations/:id/move">
+          <% @all_realisations.order(position: :desc).each do |realisation| %>
+            <tr data-id="<%= realisation.id %>">
+              <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+              <td><%= realisation.title %></td>
+              <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
+              <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+              <% if realisation.published == true %>
+                <td> <%= link_to "En ligne", publish_realisation_path(realisation.id), method: :patch, id: "published-off" %></td>
+              <% else %>
+                <td> <%= link_to "Hors ligne", publish_realisation_path(realisation.id), method: :patch, id: "published-on" %></td>
+              <% end %>
+              </tr>
           <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="admin-articles">Articles</h3>
+    <div id="admin-table-articles">
+      <%= link_to "Ajouter un article", new_article_path %>
+      <table class="table table-bordered table-hover my-3">
+        <thead>
+          <tr>
+            <th scope="col">Repositionner</th>
+            <th scope="col">Titres</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Statut</th>
+          </tr>
+        </thead>
+        <tbody data-controller="drag" data-drag-url="/articles/:id/move">
+          <% @all_articles.order(position: :desc).each do |article| %>
+            <tr data-id="<%= article.id %>">
+              <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+              <td><%= article.title %></td>
+              <td><%= link_to "Editer", edit_article_path(article.id) %>
+              <%= link_to "Supprimer", article_path(article.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+               <% if article.published == true %>
+                <td> <%= link_to "En ligne", publish_article_path(article.id), method: :patch, id: "published-off" %></td>
+              <% else %>
+                <td> <%= link_to "Hors ligne", publish_article_path(article.id), method: :patch, id: "published-on" %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

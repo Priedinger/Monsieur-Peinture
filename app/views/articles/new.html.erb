@@ -4,8 +4,7 @@
     <%= f.input :content, as: :rich_text_area, label: "Contenu de l'article" %>
     <%= f.input :photos, as: :file, input_html: { multiple: true, id: 'photo-input' } %>
     <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    <%= f.input :published, as: :boolean, label: "Publier", :input_html => { checked: true } %>
-    <%= f.button :submit, "Ajouter l'article'", :class => "btn btn-primary w-100" %>
+    <%= f.button :submit, "Ajouter l'article", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>
 

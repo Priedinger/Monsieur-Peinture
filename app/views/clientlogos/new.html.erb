@@ -2,7 +2,6 @@
   <%= simple_form_for @clientlogo do |f| %>
     <%= f.input :name %>
     <%= f.input :photo, as: :file %>
-    <%= f.input :published, as: :boolean, label: "Publier", :input_html => { checked: true } %>
     <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
     <%= f.button :submit, "Create", :class => "btn btn-primary w-100" %>
   <% end %>

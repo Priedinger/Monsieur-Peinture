@@ -30,6 +30,12 @@ class RealisationsController < ApplicationController
   def update
     @realisation = Realisation.find(params[:id])
     @realisation.update(realisation_params)
+    unless @realisation.newphotos.empty?
+      @realisation.newphotos.each do |newphoto|
+        newphoto.name = :photos
+        newphoto.save
+      end
+    end
     redirect_to admin_path, notice: "Réalisation editée"
   end
 
@@ -61,6 +67,6 @@ class RealisationsController < ApplicationController
     private
 
   def realisation_params
-    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, :published, photos: [])
+    params.require(:realisation).permit(:title, :category, :client, :localization, :agency, :artist, :surface, :duration, :photo_credits, :description, :published, photos: [], newphotos: [])
   end
 end

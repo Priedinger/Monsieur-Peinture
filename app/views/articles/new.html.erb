@@ -1,18 +1,11 @@
-
-
-
 <div class="container">
-  <%= form_with(model: @article) do |form| %>
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title, class: "form-control" %>
-    </div>
-  <div class="field">
-      <%= form.label :content %>
-      <%= form.rich_text_area :content %>
-    </div>
-    <div class="field">
-      <button type="submit" class="btn btn-success">Save</button>
-    </div>
+  <%= simple_form_for @article do |f| %>
+    <%= f.input :title, label: "Titre de l'article" %>
+    <%= f.input :content, as: :rich_text_area, label: "Contenu de l'article" %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true, id: 'photo-input' } %>
+    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+    <%= f.input :published, as: :boolean, label: "Publier", :input_html => { checked: true } %>
+    <%= f.button :submit, "Ajouter l'article'", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>
+

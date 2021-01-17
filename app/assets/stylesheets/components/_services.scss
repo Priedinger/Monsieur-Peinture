@@ -1,24 +1,68 @@
-.service{
-  display: flex;
+.services{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   align-items: center;
-  justify-content: space-between;
-  margin-top: 10vh;
+  grid-gap: 10vh;
   margin-bottom: 10vh;
-
-  p{
-  width: 500px;
-  }
-
-}
-
-.serviceinfos{
-}
-
-.servicephoto{
+  margin-top: 15vh;
   img{
-    width: 400px;
-    height: 400px;
+    height: 80vh;
+    width: 80vh;
   }
 }
 
 
+.serviceinfos1{
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.servicephoto1{
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.serviceinfos2{
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.servicephoto2{
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.serviceinfos3{
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.servicephoto3{
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.serviceinfos4{
+  grid-row: 4;
+  grid-column: 2;
+}
+
+.servicephoto4{
+  grid-row: 4;
+  grid-column: 1;
+}
+
+
+@media(max-width: 768px) {
+  .services{
+    display: block;
+    text-align: center;
+    margin-bottom: 5vh;
+    img{
+      height: 40vh;
+      width: 40vh;
+      margin-bottom: 5vh;
+    }
+  }
+}

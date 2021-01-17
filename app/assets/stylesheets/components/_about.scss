@@ -7,20 +7,18 @@
   margin: 3vh;
   .title{
     text-align: center;
-    }
-  .photo{
-    text-align: center;
-     img {
-      height: 30vh;
-      width: 30vh;
-      margin-bottom: 5vh;
-    }
-  }
 
+    }
+  .icon{
+    text-align: center;
+    font-size: 20vh;
+    }
 }
 
 .partners-title{
     text-align: center;
+    margin-bottom: -10vh;
+    margin-top: 10vh;
 }
 
 .partners{
@@ -30,13 +28,13 @@
 .partner{
   width: 50%;
   margin: 10vh;
-    text-align: center;
 
   .photo{
    img {
-    height: 30vh;
-    width: 30vh;
+    height: auto;
+    width: auto;
     margin-bottom: 5vh;
+    object-fit: cover;
   }
 }
 }

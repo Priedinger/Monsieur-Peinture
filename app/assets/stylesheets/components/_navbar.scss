@@ -1,6 +1,6 @@
 .midnightHeader.default {
   path {
-    fill: grey;
+    fill: black;
   }
   a {
     color: black;
@@ -17,7 +17,7 @@
 
 .midnightHeader.grey {
   path {
-    fill: grey;
+    fill: black;
   }
   a {
     color: black;
@@ -29,10 +29,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // padding: 1rem;
-  // p {
-  //   margin-bottom: 0;
-  // }
 }
 
 

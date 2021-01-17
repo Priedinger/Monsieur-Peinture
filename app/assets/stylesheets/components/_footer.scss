@@ -10,6 +10,14 @@
    margin: 0;
   }
 }
+
+.contact-foooter-form{
+  input{
+  width: 30vh;
+  text-align: center;
+  }
+}
+
 .footer-links {
   display: flex;
   align-items: center;
@@ -44,3 +52,40 @@
 .footer .fa-heart {
   color: #D23333;
 }
+
+
+@media(max-width: 768px) {
+  .footer{
+    display: block;
+    text-align: center;
+    height: 30vh;
+    padding: 2vh;
+  }
+  .footer-links {
+    display: block;
+    align-items: center;
+    margin-top: 1vh;
+  }
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 5px 10px;
+  }
+  .contact-foooter-form{
+    input{
+    width: 35vh;
+    margin: 3vh;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+

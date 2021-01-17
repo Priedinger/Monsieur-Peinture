@@ -1,5 +1,5 @@
 <div id="banner" class="banner" data-midnight="white">
-  <%= render 'shared/banner' %>
+  <%= render 'shared/banners' %>
 </div>
 
 <div class="container" data-midnight="grey">
@@ -14,10 +14,8 @@
        <p> de fresques réalisées</p>
     </div>
 
-    <div class="logos">
-
     <h4> Pour qui nous le faisons </h4>
-
+    <div class="logos">
       <div class="logos-grid">
         <% @current_logos.each do |logo| %>
           <div class="logo">
@@ -31,9 +29,9 @@
       </div>
     </div>
 
-    <div class="verbatims">
     <h4>  Ils parlent de nous </h4>
-        <%= render 'shared/text_caroussel' %>
+    <div class="verbatims">
+        <%= render 'shared/verbatims' %>
     </div>
   </div>
 </div>

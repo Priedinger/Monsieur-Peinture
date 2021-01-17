@@ -5,27 +5,31 @@
   grid-template-rows: repeat(3, 1fr);
   height: 70vh;
   align-items: center;
-
 }
 
 .text {
   grid-column: 1 / 8;
   grid-row: 1;
   text-align: center;
+  p{
+    margin: 0;
+    font-size: 20px;
+  }
 }
 
 .contact-button {
   grid-column: 4 / 5;
   grid-row: 2;
   text-align: center;
-  max-width: 20vh;
+  width: 25vh;
   padding: 1vh;
   background-color: black;
-  border-radius: 2px;
+  border-radius: 4px;
   text-decoration: none;
   color: white;
     a{
       color: white;
+      font-size: 20px;
     }
     :hover{
     text-decoration: none;
@@ -36,13 +40,40 @@
   grid-row: 3;
   display: flex;
   justify-content: center;
+  p{
+    margin: 0;
+    font-size: 20px;
+  }
 
   .contact-infos-left {
     text-align: right;
-    padding-right: 2vh;
+    padding-right: 1vh;
+
   }
   .contact-infos-right {
     text-align: left;
-    padding-right: 2vh;
+    padding-left: 1vh;
   }
 }
+
+
+@media(max-width: 768px) {
+  .contact-infos{
+    grid-column: 3 / 6;
+    grid-row: 3;
+    display: block;
+    p{
+      margin: 0;
+      text-align: center;
+      width: 100%;
+    }
+    .contact-infos-left {
+      padding: 0;
+    }
+    .contact-infos-right {
+      padding: 0;
+    }
+  }
+}
+
+

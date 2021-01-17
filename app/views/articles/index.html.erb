@@ -1,5 +1,7 @@
-<% @articles.each do |article| %>
-  <%= link_to article_path(article.id) do  %>
-    <% article.title %>
+<div class="container">
+  <% @articles.each do |article| %>
+    <%= link_to article_path(article.id) do  %>
+      <% article.title %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

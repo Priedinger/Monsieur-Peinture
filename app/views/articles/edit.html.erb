@@ -1,6 +1,6 @@
 <div class="container">
-  <%= form_with scope: :article, url: @article, local: true do |form| %>
-    <%= form.label "Titire de l'article" %><br>
+  <%= form_with scope: :article, url: @article, method: :patch, local: true do |form| %>
+    <%= form.label "Titre de l'article" %><br>
     <%= form.text_field :title %> <br>
     <%= form.label "Contenu de l'article" %><br>
     <%= form.rich_text_area :content %>

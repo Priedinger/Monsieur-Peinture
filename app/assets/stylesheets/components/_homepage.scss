@@ -1,3 +1,7 @@
+.hp-contains{
+  text-align: center;
+}
+
 .banner{
   height: 100vh;
   margin-top: -10vh;
@@ -13,7 +17,6 @@
   height: 40vh;
   display: block;
   justify-content: center;
-  text-align: center;
 }
 
 .logos{
@@ -36,20 +39,30 @@
 
 .verbatims{
     height: 100vh;
-    text-align: center;
-
+    align-items: center;
 }
+
 .verbatim{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
 .verbatim-infos{
-
+  width: 50%;
+  p{
+    font-size: 3vh;
+    font-weight: lighter;
+  }
+  h4{
+    font-size: 3vh;
+    font-weight: lighter;
     }
+  }
 .verbatim-photo{
+  width: 50%;
   img {
-    max-width: 50vh;
+    width: 100%;
+    height: auto;
       }
     }
 

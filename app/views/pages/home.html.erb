@@ -3,36 +3,37 @@
 </div>
 
 <div class="container" data-midnight="grey">
+  <div class="hp-contains">
+    <div class="counter-block">
 
-  <div class="counter-block">
+      <p> Nous réalisons des fresques artistiques et décoratives pour les collectivités locales, les entreprises, les bailleurs, les aménageurs, les agences de communication, ...
+      </p>
 
-    <p> Nous réalisons des fresques artistiques et décoratives pour les collectivités locales, les entreprises, les bailleurs, les aménageurs, les agences de communication, ...
-    </p>
+      <h3 id="counter" data-value="<%=@displayed_counter.surface%>"> </h3>
 
-    <h3 id="counter" data-value="<%=@displayed_counter.surface%>"> </h3>
-
-     <p> de fresques réalisées</p>
-  </div>
-
-  <div class="logos">
-
-  <h4> Pour qui nous le faisons </h4>
-
-    <div class="logos-grid">
-      <% @current_logos.each do |logo| %>
-        <div class="logo">
-          <% if logo.photo.attached?%>
-            <%= cl_image_tag logo.photo.key, class: "d-block w-100"%>
-          <% else %>
-            <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
-          <% end %>
-        </div>
-      <% end %>
+       <p> de fresques réalisées</p>
     </div>
-  </div>
 
-  <div class="verbatims">
-  <h4>  Ils parlent de nous </h4>
-      <%= render 'shared/text_caroussel' %>
+    <div class="logos">
+
+    <h4> Pour qui nous le faisons </h4>
+
+      <div class="logos-grid">
+        <% @current_logos.each do |logo| %>
+          <div class="logo">
+            <% if logo.photo.attached?%>
+              <%= cl_image_tag logo.photo.key, class: "d-block w-100"%>
+            <% else %>
+              <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="verbatims">
+    <h4>  Ils parlent de nous </h4>
+        <%= render 'shared/text_caroussel' %>
+    </div>
   </div>
 </div>

@@ -35,7 +35,6 @@ import { initAdminTableToggle } from '../components/admin-table.js';
 
 document.addEventListener('turbolinks:load', () => {
 
-
   initCountUp();
   initAdminTableToggle();
 

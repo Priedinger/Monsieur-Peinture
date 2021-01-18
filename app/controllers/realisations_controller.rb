@@ -56,11 +56,9 @@ class RealisationsController < ApplicationController
       if @realisation.published == true
         @realisation.published = false
         @realisation.save
-        redirect_to admin_path, notice: "Realisation hors ligne"
       else
         @realisation.published = true
         @realisation.save
-        redirect_to admin_path, notice: "Realisation en ligne"
       end
   end
 

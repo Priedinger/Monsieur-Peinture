@@ -22,9 +22,27 @@
               <td><%= link_to "Editer", edit_banner_path(banner.id) %>
               <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
               <% if banner.published == true %>
-                <td> <%= link_to "En ligne", publish_banner_path(banner.id), method: :patch, id: "published-off" %></td>
+                <td> 
+                  <div 
+                    id="banner-toggler-<%= banner.id %>" 
+                    class="btn btn-outline-success onoff btn-sm" 
+                    data-controller="publisher"
+                    data-action="click->publisher#publish"
+                    data-publisher-url="<%= publish_banner_path(banner.id) %>">
+                    En ligne
+                  </div>
+                </td>
               <% else %>
-                <td> <%= link_to "Hors ligne", publish_banner_path(banner.id), method: :patch, id: "published-on" %></td>
+                <td>
+                  <div 
+                    id="banner-toggler-<%= banner.id %>" 
+                    class="btn btn-outline-danger onoff btn-sm" 
+                    data-controller="publisher" 
+                    data-action="click->publisher#publish" 
+                    data-publisher-url="<%= publish_banner_path(banner.id) %>">
+                    Hors ligne
+                  </div>
+                </td>
               <% end %>
             </tr>
           <% end %>
@@ -35,7 +53,7 @@
     <h3 id="admin-counter">Compteur de m²</h3>
 
     <div class="hidden-admin-table">
-      <%= simple_form_for @displayed_counter do |f| %>
+      <%= simple_form_for @displayed_counter, remote: :true do |f| %>
         <%= f.input :surface, label: "Surface actuelle affichée:" %>
         <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
     <% end %>
@@ -66,9 +84,27 @@
             <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
             <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
             <% if logo.published == true %>
-              <td> <%= link_to "En ligne", publish_clientlogo_path(logo.id), method: :patch, id: "published-off" %></td>
+              <td> 
+                <div 
+                  id="logo-toggler-<%= logo.id %>" 
+                  class="btn btn-outline-success onoff btn-sm" 
+                  data-controller="publisher" 
+                  data-action="click->publisher#publish" 
+                  data-publisher-url="<%= publish_clientlogo_path(logo.id) %>">
+                  En ligne
+                </div>
+              </td>
             <% else %>
-              <td> <%= link_to "Hors ligne", publish_clientlogo_path(logo.id), method: :patch, id: "published-on" %></td>
+              <td> 
+                <div 
+                  id="logo-toggler-<%= logo.id %>" 
+                  class="btn btn-outline-danger onoff btn-sm" 
+                  data-controller="publisher" 
+                  data-action="click->publisher#publish" 
+                  data-publisher-url="<%= publish_clientlogo_path(logo.id) %>">
+                  Hors ligne
+                </div>
+              </td>
             <% end %>
           </tr>
         <% end %>
@@ -97,9 +133,27 @@
             <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
             <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
             <% if verbatim.published == true %>
-              <td> <%= link_to "En ligne", publish_verbatim_path(verbatim.id), method: :patch, id: "published-off" %></td>
+              <td> 
+                <div 
+                  id="verbatim-toggler-<%= verbatim.id %>" 
+                  class="btn btn-outline-success onoff btn-sm" 
+                  data-controller="publisher" 
+                  data-action="click->publisher#publish" 
+                  data-publisher-url="<%= publish_verbatim_path(verbatim.id) %>">
+                  En ligne
+                </div>
+              </td>
             <% else %>
-              <td> <%= link_to "Hors ligne", publish_verbatim_path(verbatim.id), method: :patch, id: "published-on" %></td>
+              <td> 
+                <div 
+                  id="verbatim-toggler-<%= verbatim.id %>" 
+                  class="btn btn-outline-danger onoff btn-sm" 
+                  data-controller="publisher" 
+                  data-action="click->publisher#publish" 
+                  data-publisher-url="<%= publish_verbatim_path(verbatim.id) %>">
+                  Hors ligne
+                </div>
+              </td>
             <% end %>
             </tr>
         <% end %>
@@ -125,11 +179,29 @@
               <th scope="row"><i class="fas fa-arrows-alt"></i></th>
               <td><%= realisation.title %></td>
               <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
-              <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+              <%= link_to "Supprimer", realisation_path(realisation.id), remote: :true, method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
               <% if realisation.published == true %>
-                <td> <%= link_to "En ligne", publish_realisation_path(realisation.id), method: :patch, id: "published-off" %></td>
+                <td> 
+                  <div 
+                    id="realisation-toggler-<%= realisation.id %>" 
+                    class="btn btn-outline-success onoff btn-sm" 
+                    data-controller="publisher" 
+                    data-action="click->publisher#publish" 
+                    data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
+                    En ligne
+                  </div>
+                </td>
               <% else %>
-                <td> <%= link_to "Hors ligne", publish_realisation_path(realisation.id), method: :patch, id: "published-on" %></td>
+                <td>
+                  <div 
+                    id="realisation-toggler-<%= realisation.id %>" 
+                    class="btn btn-outline-danger onoff btn-sm" 
+                    data-controller="publisher" 
+                    data-action="click->publisher#publish" 
+                    data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
+                    Hors ligne
+                  </div>
+                </td>
               <% end %>
               </tr>
           <% end %>
@@ -157,9 +229,27 @@
               <td><%= link_to "Editer", edit_article_path(article.id) %>
               <%= link_to "Supprimer", article_path(article.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
                <% if article.published == true %>
-                <td> <%= link_to "En ligne", publish_article_path(article.id), method: :patch, id: "published-off" %></td>
+                <td>
+                  <div 
+                    id="article-toggler-<%= article.id %>" 
+                    class="btn btn-outline-success onoff btn-sm" 
+                    data-controller="publisher" 
+                    data-action="click->publisher#publish" 
+                    data-publisher-url="<%= publish_article_path(article.id) %>">
+                    En ligne
+                  </div>
+                </td>
               <% else %>
-                <td> <%= link_to "Hors ligne", publish_article_path(article.id), method: :patch, id: "published-on" %></td>
+                <td>
+                  <div 
+                    id="article-toggler-<%= article.id %>" 
+                    class="btn btn-outline-danger onoff btn-sm" 
+                    data-controller="publisher" 
+                    data-action="click->publisher#publish" 
+                    data-publisher-url="<%= publish_article_path(article.id) %>">
+                    Hors ligne
+                  </div>
+                </td>
               <% end %>
             </tr>
           <% end %>

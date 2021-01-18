@@ -28,11 +28,9 @@ class BannersController < ApplicationController
     if @banner.published == true
       @banner.published = false
       @banner.save
-      redirect_to admin_path, notice: "Photo hors ligne"
     else
       @banner.published = true
       @banner.save
-      redirect_to admin_path, notice: "Photo en ligne"
     end
   end
 

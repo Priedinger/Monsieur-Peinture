@@ -46,11 +46,9 @@ class ClientlogosController < ApplicationController
     if @clientlogo.published == true
       @clientlogo.published = false
       @clientlogo.save
-      redirect_to admin_path, notice: "Logo hors ligne"
     else
       @clientlogo.published = true
       @clientlogo.save
-      redirect_to admin_path, notice: "Logo en ligne"
     end
   end
 

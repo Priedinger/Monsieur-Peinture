@@ -24,6 +24,7 @@ gem 'cloudinary', '~> 1.16.0'
 
 gem "acts_as_list", "~> 1.0"
 
+gem 'image_processing', '~> 1.0'
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

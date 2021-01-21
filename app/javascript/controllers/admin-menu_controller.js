@@ -6,11 +6,22 @@ export default class extends Controller {
   connect() {
     console.log(this.tableTarget)
     this.tableTarget.classList.remove('hidden-admin-table')
+    document.getElementById('default-active').classList.add('active');
   }
 
   display() {
     event.preventDefault();
     console.log(event.target)
+
+    const buttons = document.querySelectorAll('.list-group-item')
+    buttons.forEach(button => {
+      if (button.classList.contains('active')) {
+        button.classList.remove('active');
+      }
+    });
+
+    event.target.classList.add('active');
+    
     this.tableTargets.forEach(table => {
       if (!table.classList.contains('hidden-admin-table')) {
         table.classList.add('hidden-admin-table');

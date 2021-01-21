@@ -3,7 +3,7 @@
         <div class="col-3">
           <div class="menu">
             <ul class="list-group" style="list-style-type: none;">
-              <li data-action="click->admin-menu#display"><%= link_to "Photos de la bannière", admin_path,class: "list-group-item list-group-item-action text-decoration", data: {id: 'banners'}%></li>
+              <li data-action="click->admin-menu#display"><%= link_to "Photos de la bannière", admin_path, id: "default-active", class: "list-group-item list-group-item-action text-decoration", data: {id: 'banners'}%></li>
               <li data-action="click->admin-menu#display"><%= link_to "Compteur de m²", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'counter'} %></li>
               <li data-action="click->admin-menu#display"><%= link_to "Logos", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'logos'} %></li>
               <li data-action="click->admin-menu#display"><%= link_to "Verbatims", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'verbatims'} %></li>

@@ -42,7 +42,6 @@ class RealisationsController < ApplicationController
   def destroy
     @realisation = Realisation.find(params[:id])
     @realisation.destroy
-    redirect_to admin_path, notice: "Réalisation supprimée !"
   end
 
   def move

@@ -32,7 +32,6 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to admin_path, notice: "Article supprimée"
   end
 
   def publish

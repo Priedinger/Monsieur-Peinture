@@ -32,7 +32,6 @@ class VerbatimsController < ApplicationController
   def destroy
     @verbatim = Verbatim.find(params[:id])
     @verbatim.destroy
-    redirect_to admin_path, notice: "Logo client supprimée"
   end
 
   def move

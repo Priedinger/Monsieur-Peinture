@@ -20,7 +20,7 @@
               <th scope="row"><i class="fas fa-arrows-alt"></i></th>
               <td><%= banner.title %></td>
               <td><%= link_to "Editer", edit_banner_path(banner.id) %>
-              <%= link_to "Supprimer", banner_path(banner.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+              <%= link_to "Supprimer", banner_path(banner.id), method: :delete, :remote => true, data: { confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
               <% if banner.published == true %>
                 <td> 
                   <div 
@@ -82,7 +82,7 @@
               <td><%= logo.name %></td>
             <% end %>
             <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
-            <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+            <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
             <% if logo.published == true %>
               <td> 
                 <div 
@@ -131,7 +131,7 @@
             <th scope="row"><i class="fas fa-arrows-alt"></i></th>
             <td><%= verbatim.author %></td>
             <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
-            <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+            <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
             <% if verbatim.published == true %>
               <td> 
                 <div 
@@ -179,7 +179,7 @@
               <th scope="row"><i class="fas fa-arrows-alt"></i></th>
               <td><%= realisation.title %></td>
               <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
-              <%= link_to "Supprimer", realisation_path(realisation.id), remote: :true, method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+              <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
               <% if realisation.published == true %>
                 <td> 
                   <div 
@@ -227,7 +227,7 @@
               <th scope="row"><i class="fas fa-arrows-alt"></i></th>
               <td><%= article.title %></td>
               <td><%= link_to "Editer", edit_article_path(article.id) %>
-              <%= link_to "Supprimer", article_path(article.id), method: :delete, data: {confirm: "Supprimer définitivement ?"} %></td>
+              <%= link_to "Supprimer", article_path(article.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
                <% if article.published == true %>
                 <td>
                   <div 

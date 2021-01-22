@@ -1,260 +1,39 @@
-<div class="container">
-  <div class="admin-page">
-
-    <h3 id="admin-banners"> Photos de la bannière </h3>
-
-    <div class="hidden-admin-table">
-          <%= link_to "Ajouter une photo à la bannière", new_banner_path %>
-        <table class="table table-bordered table-hover my-3" >
-        <thead>
-          <tr>
-            <th scope="col">Repositionner</th>
-            <th scope="col">Titres</th>
-            <th scope="col">Actions</th>
-            <th scope="col">Statut</th>
-          </tr>
-        </thead>
-        <tbody data-controller="drag" data-drag-url="/banners/:id/move">
-          <% @all_banners.order(position: :desc).each do |banner| %>
-            <tr data-id="<%= banner.id %>">
-              <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-              <td><%= banner.title %></td>
-              <td><%= link_to "Editer", edit_banner_path(banner.id) %>
-              <%= link_to "Supprimer", banner_path(banner.id), method: :delete, :remote => true, data: { confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
-              <% if banner.published == true %>
-                <td> 
-                  <div 
-                    id="banner-toggler-<%= banner.id %>" 
-                    class="btn btn-outline-success onoff btn-sm" 
-                    data-controller="publisher"
-                    data-action="click->publisher#publish"
-                    data-publisher-url="<%= publish_banner_path(banner.id) %>">
-                    En ligne
-                  </div>
-                </td>
-              <% else %>
-                <td>
-                  <div 
-                    id="banner-toggler-<%= banner.id %>" 
-                    class="btn btn-outline-danger onoff btn-sm" 
-                    data-controller="publisher" 
-                    data-action="click->publisher#publish" 
-                    data-publisher-url="<%= publish_banner_path(banner.id) %>">
-                    Hors ligne
-                  </div>
-                </td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-   </div>
-
-    <h3 id="admin-counter">Compteur de m²</h3>
-
-    <div class="hidden-admin-table">
-      <%= simple_form_for @displayed_counter, remote: :true do |f| %>
-        <%= f.input :surface, label: "Surface actuelle affichée:" %>
-        <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
-    <% end %>
-
+    <div class="container" data-controller="admin-menu">
+      <div class="row">
+        <div class="col-3">
+          <div class="menu">
+            <ul class="list-group" style="list-style-type: none;">
+              <li data-action="click->admin-menu#display"><%= link_to "Photos de la bannière", admin_path, id: "default-active", class: "list-group-item list-group-item-action text-decoration", data: {id: 'banners'}%></li>
+              <li data-action="click->admin-menu#display"><%= link_to "Compteur de m²", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'counter'} %></li>
+              <li data-action="click->admin-menu#display"><%= link_to "Logos", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'logos'} %></li>
+              <li data-action="click->admin-menu#display"><%= link_to "Verbatims", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'verbatims'} %></li>
+              <li data-action="click->admin-menu#display"><%= link_to "Réalisations", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'realisations'} %></li>
+              <li data-action="click->admin-menu#display"><%= link_to "Articles", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'articles'} %></li>
+            </ul>
+          </div>    
+        </div>
+        <div class="col-9">
+          <div class="content" data-admin-menu-target="content">
+            <div class="hidden-admin-table" id="banners" data-admin-menu-target="table">
+              <%= render partial: 'shared/banners_row', locals: {all_banners: @all_banners} %>
+            </div>
+            <div class="hidden-admin-table" id="counter" data-admin-menu-target="table">
+              <%= render partial: 'shared/counter_row', locals: {displayed_counter: @displayed_counter} %>
+            </div>
+            <div class="hidden-admin-table" id="logos" data-admin-menu-target="table">
+              <%= render partial: 'shared/logos_row', locals: {all_clientlogos: @all_clientlogos} %>
+            </div>
+            <div class="hidden-admin-table" id="verbatims" data-admin-menu-target="table">
+              <%= render partial: 'shared/verbatims_row', locals: {all_verbatims: @all_verbatims} %>
+            </div>
+            <div class="hidden-admin-table" id="realisations" data-admin-menu-target="table">
+              <%= render partial: 'shared/realisations_row', locals: {all_realisations: @all_realisations} %>
+            </div>
+            <div class="hidden-admin-table" id="articles" data-admin-menu-target="table">
+              <%= render partial: 'shared/articles_row', locals: {all_articles: @all_articles} %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <h3 id="admin-logos">Logos</h3>
-    <div class="hidden-admin-table">
-      <%= link_to "Ajouter un logo client", new_clientlogo_path %>
-      <table class="table table-bordered table-hover my-3">
-      <thead>
-        <tr>
-          <th scope="col">Repositionner</th>
-          <th scope="col">Client</th>
-          <th scope="col">Actions</th>
-          <th scope="col">Statut</th>
-        </tr>
-      </thead>
-      <tbody data-controller="drag" data-drag-url="/clientlogos/:id/move">
-        <% @all_clientlogos.order(position: :desc).each do |logo| %>
-          <tr data-id="<%= logo.id %>">
-            <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-            <% if logo.photo.attached? %>
-              <td><%= cl_image_tag logo.photo.key, width: 30, height: 30 %></td>
-            <% else %>
-              <td><%= logo.name %></td>
-            <% end %>
-            <td><%= link_to "Editer", edit_clientlogo_path(logo.id) %>
-            <%= link_to "Supprimer", clientlogo_path(logo.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
-            <% if logo.published == true %>
-              <td> 
-                <div 
-                  id="logo-toggler-<%= logo.id %>" 
-                  class="btn btn-outline-success onoff btn-sm" 
-                  data-controller="publisher" 
-                  data-action="click->publisher#publish" 
-                  data-publisher-url="<%= publish_clientlogo_path(logo.id) %>">
-                  En ligne
-                </div>
-              </td>
-            <% else %>
-              <td> 
-                <div 
-                  id="logo-toggler-<%= logo.id %>" 
-                  class="btn btn-outline-danger onoff btn-sm" 
-                  data-controller="publisher" 
-                  data-action="click->publisher#publish" 
-                  data-publisher-url="<%= publish_clientlogo_path(logo.id) %>">
-                  Hors ligne
-                </div>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-    <h3 id="admin-verbatims">Verbatims</h3>
-
-    <div class="hidden-admin-table">
-      <%= link_to "Ajouter un verbatim", new_verbatim_path %>
-      <table class="table table-bordered table-hover my-3">
-      <thead>
-        <tr>
-          <th scope="col">Repositionner</th>
-          <th scope="col">Auteur</th>
-          <th scope="col">Actions</th>
-          <th scope="col">Statut</th>
-        </tr>
-      </thead>
-      <tbody data-controller="drag" data-drag-url="/verbatims/:id/move">
-        <% @all_verbatims.order(position: :desc).each do |verbatim| %>
-          <tr data-id="<%= verbatim.id %>">
-            <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-            <td><%= verbatim.author %></td>
-            <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
-            <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
-            <% if verbatim.published == true %>
-              <td> 
-                <div 
-                  id="verbatim-toggler-<%= verbatim.id %>" 
-                  class="btn btn-outline-success onoff btn-sm" 
-                  data-controller="publisher" 
-                  data-action="click->publisher#publish" 
-                  data-publisher-url="<%= publish_verbatim_path(verbatim.id) %>">
-                  En ligne
-                </div>
-              </td>
-            <% else %>
-              <td> 
-                <div 
-                  id="verbatim-toggler-<%= verbatim.id %>" 
-                  class="btn btn-outline-danger onoff btn-sm" 
-                  data-controller="publisher" 
-                  data-action="click->publisher#publish" 
-                  data-publisher-url="<%= publish_verbatim_path(verbatim.id) %>">
-                  Hors ligne
-                </div>
-              </td>
-            <% end %>
-            </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-    <h3 id="admin-realisations">Réalisations</h3>
-    <div class="hidden-admin-table">
-      <%= link_to "Ajouter une réalisation", new_realisation_path %>
-      <table class="table table-bordered table-hover my-3" >
-        <thead>
-          <tr>
-            <th scope="col">Repositionner</th>
-            <th scope="col">Titres</th>
-            <th scope="col">Actions</th>
-            <th scope="col">Statut</th>
-          </tr>
-        </thead>
-        <tbody data-controller="drag" data-drag-url="/realisations/:id/move">
-          <% @all_realisations.order(position: :desc).each do |realisation| %>
-            <tr data-id="<%= realisation.id %>">
-              <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-              <td><%= realisation.title %></td>
-              <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
-              <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
-              <% if realisation.published == true %>
-                <td> 
-                  <div 
-                    id="realisation-toggler-<%= realisation.id %>" 
-                    class="btn btn-outline-success onoff btn-sm" 
-                    data-controller="publisher" 
-                    data-action="click->publisher#publish" 
-                    data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
-                    En ligne
-                  </div>
-                </td>
-              <% else %>
-                <td>
-                  <div 
-                    id="realisation-toggler-<%= realisation.id %>" 
-                    class="btn btn-outline-danger onoff btn-sm" 
-                    data-controller="publisher" 
-                    data-action="click->publisher#publish" 
-                    data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
-                    Hors ligne
-                  </div>
-                </td>
-              <% end %>
-              </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 id="admin-articles">Articles</h3>
-    <div class="hidden-admin-table">
-      <%= link_to "Ajouter un article", new_article_path %>
-      <table class="table table-bordered table-hover my-3">
-        <thead>
-          <tr>
-            <th scope="col">Repositionner</th>
-            <th scope="col">Titres</th>
-            <th scope="col">Actions</th>
-            <th scope="col">Statut</th>
-          </tr>
-        </thead>
-        <tbody data-controller="drag" data-drag-url="/articles/:id/move">
-          <% @all_articles.order(position: :desc).each do |article| %>
-            <tr data-id="<%= article.id %>">
-              <th scope="row"><i class="fas fa-arrows-alt"></i></th>
-              <td><%= article.title %></td>
-              <td><%= link_to "Editer", edit_article_path(article.id) %>
-              <%= link_to "Supprimer", article_path(article.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
-               <% if article.published == true %>
-                <td>
-                  <div 
-                    id="article-toggler-<%= article.id %>" 
-                    class="btn btn-outline-success onoff btn-sm" 
-                    data-controller="publisher" 
-                    data-action="click->publisher#publish" 
-                    data-publisher-url="<%= publish_article_path(article.id) %>">
-                    En ligne
-                  </div>
-                </td>
-              <% else %>
-                <td>
-                  <div 
-                    id="article-toggler-<%= article.id %>" 
-                    class="btn btn-outline-danger onoff btn-sm" 
-                    data-controller="publisher" 
-                    data-action="click->publisher#publish" 
-                    data-publisher-url="<%= publish_article_path(article.id) %>">
-                    Hors ligne
-                  </div>
-                </td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+    

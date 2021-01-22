@@ -1,0 +1,4 @@
+<%= simple_form_for displayed_counter, remote: :true do |f| %>
+    <%= f.input :surface, label: "Surface actuelle affichée:" %>
+    <%= f.button :submit, "Actualiser le compteur", :class => "btn btn-primary w-100" %>
+<% end %>

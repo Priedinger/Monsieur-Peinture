@@ -1,0 +1,44 @@
+<%= link_to "Ajouter un verbatim", new_verbatim_path %>
+<table class="table table-bordered table-hover my-3">
+  <thead>
+    <tr>
+      <th style="width: 1%"></th>
+      <th style="width: auto">Auteur</th>
+      <th style="width: auto">Actions</th>
+      <th style="width: auto">Statut</th>
+    </tr>
+  </thead>
+  <tbody data-controller="drag" data-drag-url="/verbatims/:id/move">
+    <% all_verbatims.order(position: :desc).each do |verbatim| %>
+      <tr data-id="<%= verbatim.id %>">
+        <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+        <td><%= verbatim.author %></td>
+        <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
+        <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
+        <% if verbatim.published == true %>
+          <td> 
+            <div 
+              id="verbatim-toggler-<%= verbatim.id %>" 
+              class="btn btn-outline-success onoff btn-sm" 
+              data-controller="publisher" 
+              data-action="click->publisher#publish" 
+              data-publisher-url="<%= publish_verbatim_path(verbatim.id) %>">
+              En ligne
+            </div>
+          </td>
+        <% else %>
+          <td> 
+            <div 
+              id="verbatim-toggler-<%= verbatim.id %>" 
+              class="btn btn-outline-danger onoff btn-sm" 
+              data-controller="publisher" 
+              data-action="click->publisher#publish" 
+              data-publisher-url="<%= publish_verbatim_path(verbatim.id) %>">
+              Hors ligne
+            </div>
+          </td>
+        <% end %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -29,14 +29,10 @@ require("@rails/actiontext")
 
 import "bootstrap";
 import { initCountUp } from '../components/counter.js';
-import { initAdminTableToggle } from '../components/admin-table.js';
-
-
 
 document.addEventListener('turbolinks:load', () => {
 
   initCountUp();
-  initAdminTableToggle();
 
 });
 

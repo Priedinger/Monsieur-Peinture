@@ -12,14 +12,19 @@
   </head>
 
  <body>
-
-    <%= render 'shared/navbar' %>
-    <div class="content-wrapper">
+    <% if !params[:action] == 'admin' %>
+      <%= render 'shared/navbar' %>
+      <div class="content-wrapper">
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+      </div>
+    <% else %>
       <%= render 'shared/flashes' %>
-
       <%= yield %>
-    </div>
-    <%= render 'shared/footer' %>
+    <% end %>
+    <% if !params[:action] == 'admin' %>
+      <%= render 'shared/footer' %>
+    <% end %>
 
     <script src="https://cdn.jsdelivr.net/combine/npm/jquery@1.11,npm/midnight.js@1.1"></script>
     <script src="//cdn.jsdelivr.net/npm/midnight.js@1.1/dist/midnight.jquery.min.js"></script>

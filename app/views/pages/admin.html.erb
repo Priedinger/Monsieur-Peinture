@@ -1,8 +1,13 @@
-    <div class="container" data-controller="admin-menu">
+    <div data-controller="admin-menu">
       <div class="row">
-        <div class="col-3">
-          <div class="menu">
-            <ul class="list-group" style="list-style-type: none;">
+        <div class="col-3 nopadding">
+          <div class="admin-menu">
+            <div class="admin-menu-brand">
+              <svg width="97" height="40" viewBox="0 0 97 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M97 0H0V40H97V0ZM18.0234 9.99805V30H19.9238V12.4863L26.2949 26.582H28.1406L34.6348 12.5684V30H36.4668V10.0117H33.8555L27.293 24.4629L20.9082 9.99805H18.0234ZM49.6191 16.0137V24.0391C49.6191 24.4036 49.5781 24.7865 49.4961 25.1875C49.4232 25.5794 49.2773 25.9987 49.0586 26.4453C48.849 26.8828 48.5801 27.2747 48.252 27.6211C47.9329 27.9583 47.5 28.2409 46.9531 28.4688C46.4062 28.6966 45.791 28.8105 45.1074 28.8105C43.9954 28.8105 43.2161 28.446 42.7695 27.7168C42.3229 26.9785 42.0996 25.8893 42.0996 24.4492V16.0137H40.1582V24.0391C40.1582 24.5039 40.1673 24.9141 40.1855 25.2695C40.2038 25.6159 40.2494 26.0215 40.3223 26.4863C40.3952 26.9421 40.4909 27.3385 40.6094 27.6758C40.737 28.013 40.9147 28.3594 41.1426 28.7148C41.3796 29.0612 41.653 29.3483 41.9629 29.5762C42.2819 29.7949 42.6784 29.9727 43.1523 30.1094C43.6354 30.2552 44.1732 30.3281 44.7656 30.3281C45.8047 30.3281 46.7891 30.0775 47.7188 29.5762C48.6576 29.0749 49.3092 28.3411 49.6738 27.375V30H51.5605V16.0137H49.6191ZM57.3438 18.6387V16.0137H55.457V30H57.3984V22.7266C57.3984 22.0612 57.4668 21.446 57.6035 20.8809C57.7493 20.3158 57.9727 19.7917 58.2734 19.3086C58.5833 18.8255 59.0117 18.4473 59.5586 18.1738C60.1146 17.9004 60.7708 17.7637 61.5273 17.7637V16C60.9714 16 60.4382 16.0775 59.9277 16.2324C59.4264 16.3783 58.9342 16.6608 58.4512 17.0801C57.9681 17.4902 57.599 18.0098 57.3438 18.6387ZM67.4336 29.002C68.8828 29.002 70.3958 28.3366 71.9727 27.0059V23.0957L70.6328 23.3008C69.9128 23.4102 69.3249 23.5104 68.8691 23.6016C68.4134 23.6836 67.9395 23.7884 67.4473 23.916C66.9551 24.0345 66.5677 24.1667 66.2852 24.3125C66.0026 24.4492 65.7383 24.6178 65.4922 24.8184C65.2552 25.0098 65.0866 25.2331 64.9863 25.4883C64.8861 25.7435 64.8359 26.0397 64.8359 26.377C64.8359 28.127 65.7018 29.002 67.4336 29.002ZM73.9141 30H72.3145L72.082 28.4141C70.5234 29.6901 68.86 30.3281 67.0918 30.3281C65.9251 30.3281 64.9499 30.0091 64.166 29.3711C63.3913 28.724 63.0039 27.8171 63.0039 26.6504C63.0039 26.1582 63.0768 25.7161 63.2227 25.3242C63.3776 24.9232 63.5553 24.5859 63.7559 24.3125C63.9564 24.03 64.2708 23.7747 64.6992 23.5469C65.1276 23.3099 65.5013 23.1276 65.8203 23C66.1484 22.8633 66.6361 22.7266 67.2832 22.5898C67.9303 22.444 68.4499 22.3392 68.8418 22.2754C69.2337 22.2025 69.8262 22.1068 70.6191 21.9883L71.9727 21.7832V21.209C71.9727 19.6868 71.722 18.6432 71.2207 18.0781C70.7194 17.5039 69.8672 17.2168 68.6641 17.2168C67.8802 17.2168 67.1419 17.3672 66.4492 17.668C65.7656 17.9688 65.196 18.4017 64.7402 18.9668C64.7402 18.9577 64.3529 18.5885 63.5781 17.8594C64.6992 16.4375 66.431 15.7266 68.7734 15.7266C72.2005 15.7266 73.9141 17.4173 73.9141 20.7988V30ZM77.5508 9.84766V30H79.4922V9.84766H77.5508Z" fill="white"/>
+              </svg>
+            </div>
+            <ul style="list-style-type: none;">
               <li data-action="click->admin-menu#display"><%= link_to "Photos de la bannière", admin_path, id: "default-active", class: "list-group-item list-group-item-action text-decoration", data: {id: 'banners'}%></li>
               <li data-action="click->admin-menu#display"><%= link_to "Compteur de m²", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'counter'} %></li>
               <li data-action="click->admin-menu#display"><%= link_to "Logos", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'logos'} %></li>
@@ -12,12 +17,15 @@
             </ul>
           </div>    
         </div>
-        <div class="col-9">
-          <div class="content" data-admin-menu-target="content">
+        <div class="col-9 nopadding">
+          <div class="admin-header">
+            <h2 data-admin-menu-target="header"></h2>
+          </div>
+          <div class="admin-content" data-admin-menu-target="content">
             <div class="hidden-admin-table" id="banners" data-admin-menu-target="table">
               <%= render partial: 'shared/banners_row', locals: {all_banners: @all_banners} %>
             </div>
-            <div class="hidden-admin-table" id="counter" data-admin-menu-target="table">
+            <div class="hidden-admin-table" id="counter" data-admin-menu-target="table" style="padding: 1rem;">
               <%= render partial: 'shared/counter_row', locals: {displayed_counter: @displayed_counter} %>
             </div>
             <div class="hidden-admin-table" id="logos" data-admin-menu-target="table">

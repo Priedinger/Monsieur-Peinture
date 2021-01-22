@@ -1,12 +1,60 @@
-.admin-page{
-  a{
-    max-width: 50vh;
-    border: 1px solid;
-    border-radius: 2px;
-    padding: 1vh;
+.hidden-admin-table{
+  display: none;
+}
+
+.admin-menu {
+  height: 100vh;
+  background-color: grey;
+  position: sticky;
+  top: 0;
+  left: 0;
+  ul {
+    margin: 0;
+    padding: 0;
+    a {
+      background-color: transparent;
+      color: white;
+      border: none;
+      &.active {
+        background-color: #9ea1a5;
+        color: white;
+      }
+    }
+  }
+  .admin-menu-brand {
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+.admin-header {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  h2 {
+    color: gray;
+    margin: 0;
+    padding: 0;
   }
 }
 
-.hidden-admin-table{
-  display: none;
+.admin-content {
+  background-color: lightgray;
+  min-height: 85vh;
+  padding: 1rem;
+  table {
+    background-color: white;
+  }
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
 }

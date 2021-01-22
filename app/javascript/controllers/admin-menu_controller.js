@@ -1,18 +1,22 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ 'content', 'table']
+  static targets = [ 'content', 'table', 'header']
 
   connect() {
     console.log(this.tableTarget)
     this.tableTarget.classList.remove('hidden-admin-table')
-    document.getElementById('default-active').classList.add('active');
+    const defaultActive = document.getElementById('default-active')
+    defaultActive.classList.add('active');
+    this.headerTarget.innerText = defaultActive.innerText
   }
 
   display() {
     event.preventDefault();
     console.log(event.target)
-
+    if (event.target.classList.contains('active')) {
+      return;
+    }
     const buttons = document.querySelectorAll('.list-group-item')
     buttons.forEach(button => {
       if (button.classList.contains('active')) {
@@ -21,6 +25,7 @@ export default class extends Controller {
     });
 
     event.target.classList.add('active');
+    this.headerTarget.innerText = event.target.innerText
     
     this.tableTargets.forEach(table => {
       if (!table.classList.contains('hidden-admin-table')) {

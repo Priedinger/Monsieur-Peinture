@@ -29,9 +29,11 @@ export default class extends Controller {
   }
 
   toggle() {
+    console.log('hello')
     Rails.ajax({
       type: "patch",
       url: this.data.get('url'),
     })
   }
+  
 }

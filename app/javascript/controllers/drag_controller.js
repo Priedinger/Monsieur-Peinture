@@ -29,5 +29,13 @@ export default class extends Controller {
       url: this.data.get('url').replace(":id", id),
       data: data
     })
+
+
+    // fetch('/banners', { headers: { accept: "application/json" } })
+    //   .then(response => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   });
   }
+  
 }

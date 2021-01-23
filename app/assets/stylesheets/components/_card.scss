@@ -7,3 +7,11 @@
 .img-cover {
   object-fit: cover
 }
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background: gray;
+}
+
+.realisation-grid {
+  padding-top: 1rem;
+}

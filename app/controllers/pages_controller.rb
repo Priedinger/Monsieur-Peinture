@@ -22,7 +22,7 @@ class PagesController < ApplicationController
     @all_clientlogos = Clientlogo.all
     @all_verbatims = Verbatim.all
     @displayed_counter = Counter.first
-    @all_realisations = Realisation.all
+    @all_realisations = Realisation.all.order(:position)
     @all_articles = Article.all
   end
 end

@@ -7,6 +7,7 @@ class BannersController < ApplicationController
 
   def create
     @banner = Banner.new(banner_params)
+    @banner.insert_at(1)
     @banner.save
     redirect_to admin_path, notice: "Bannière crée"
   end

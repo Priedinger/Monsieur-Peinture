@@ -9,8 +9,12 @@ export default class extends Controller {
       type: "patch",
       url: this.data.get('url'),
     })
+    console.log(event.target)
     const onOffButton = () => {
       const currentButton = document.getElementById(this.data.scope.element.id);
+      if (!currentButton.innerText) {
+        return;
+      }
       if (currentButton.innerText == "Hors ligne") {
         currentButton.innerText = "En ligne";
         currentButton.classList.add('btn-outline-success');
@@ -23,4 +27,13 @@ export default class extends Controller {
     }
     onOffButton();
   }
+
+  toggle() {
+    console.log('hello')
+    Rails.ajax({
+      type: "patch",
+      url: this.data.get('url'),
+    })
+  }
+  
 }

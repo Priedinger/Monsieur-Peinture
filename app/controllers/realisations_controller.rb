@@ -5,7 +5,7 @@ class RealisationsController < ApplicationController
     if params[:query].present?
       @realisations = Realisation.where(category: params[:query], published: true)
     else
-      @realisations = Realisation.all.where(published: true).order(position: :desc)
+      @realisations = Realisation.all.where(published: true).order(:position)
     end
   end
 
@@ -19,6 +19,7 @@ class RealisationsController < ApplicationController
 
   def create
     @realisation = Realisation.new(realisation_params)
+    @realisation.insert_at(1)
     @realisation.save
     redirect_to admin_path, notice: "Réalisation crée"
   end

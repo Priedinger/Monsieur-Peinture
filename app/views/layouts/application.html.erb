@@ -12,7 +12,7 @@
   </head>
 
  <body>
-    <% if !params[:action] == 'admin' %>
+    <% if !(params[:action] == 'admin') %>
       <%= render 'shared/navbar' %>
       <div class="content-wrapper">
         <%= render 'shared/flashes' %>
@@ -22,7 +22,7 @@
       <%= render 'shared/flashes' %>
       <%= yield %>
     <% end %>
-    <% if !params[:action] == 'admin' %>
+    <% if !(params[:action] == 'admin') %>
       <%= render 'shared/footer' %>
     <% end %>
 

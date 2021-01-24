@@ -21,8 +21,8 @@
 
   <div class="realisations-grid">
 
-    <% @realisations.each do |realisation| %>
-      <div class="realisation">
+    <% @realisations.order(:position).each do |realisation| %>
+      <div class="realisation" data-position="<%= realisation.position %>">
         <%= link_to realisation_path(realisation) do %>
           <% if realisation.photos.attached? %>
           

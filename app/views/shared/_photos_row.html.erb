@@ -1,0 +1,9 @@
+<%= link_to "Ajouter des photos", new_photo_path %>
+
+<div class="photos">
+      <% @all_photos.each do |photo| %>
+        <%= cl_image_tag photo.photos.first.key %>
+        <%= link_to "Supprimer", photo_path(photo.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %>
+        <%= link_to "Associer la photo", edit_photo_path(photo.id) %>
+      <% end %>
+</div>

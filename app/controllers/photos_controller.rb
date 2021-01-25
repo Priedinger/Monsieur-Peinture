@@ -23,9 +23,24 @@ class PhotosController < ApplicationController
     @photo.save
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    @photo.update(photo_params)
+    redirect_to admin_path
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+  end
+
   private
 
   def photo_params
-    params.require(:photo).permit(photos: [])
+    params.require(:photo).permit(:realisation_id, photos: [])
   end
 end

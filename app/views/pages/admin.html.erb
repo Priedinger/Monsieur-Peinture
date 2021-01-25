@@ -14,13 +14,13 @@
               <li data-action="click->admin-menu#display"><%= link_to "Verbatims", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'verbatims'} %></li>
               <li data-action="click->admin-menu#display"><%= link_to "Réalisations", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'realisations'} %></li>
               <li data-action="click->admin-menu#display"><%= link_to "Articles", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'articles'} %></li>
+              <li data-action="click->admin-menu#display"><%= link_to "Médiathèque", admin_path,class: "list-group-item list-group-item-action text-decoration-none", data: {id: 'photos'} %></li>
             </ul>
-          </div>    
+          </div>
         </div>
         <div class="col-9 nopadding">
           <div class="admin-header">
             <h2 data-admin-menu-target="header"></h2>
-            <%= link_to "Ajouter photo(s)", new_photo_path  %>
           </div>
           <div class="admin-content" data-admin-menu-target="content">
             <div class="hidden-admin-table" id="banners" data-admin-menu-target="table">
@@ -41,8 +41,11 @@
             <div class="hidden-admin-table" id="articles" data-admin-menu-target="table">
               <%= render partial: 'shared/articles_row', locals: {all_articles: @all_articles} %>
             </div>
+            <div class="hidden-admin-table" id="photos" data-admin-menu-target="table">
+              <%= render partial: 'shared/photos_row', locals: {all_photos: @all_photos} %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
+

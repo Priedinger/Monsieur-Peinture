@@ -20,7 +20,7 @@
 
   <div class="realisations-grid">
 
-    <% @realisation_photos.each do |photo| %>
+    <% @realisation.photos.each do |photo| %>
       <div class="realisation">
           <%= cl_image_tag photo.photos.first.key, crop: :fill %>
       </div>

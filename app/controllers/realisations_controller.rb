@@ -4,16 +4,13 @@ class RealisationsController < ApplicationController
   def index
     if params[:query].present?
       @realisations = Realisation.where(category: params[:query], published: true)
-      @realisations_photos = Photo.all
     else
       @realisations = Realisation.all.where(published: true).order(:position)
-      @realisations_photos = Photo.all
     end
   end
 
   def show
     @realisation = Realisation.find(params[:id])
-    @realisation_photos = @realisation.photos.where(realisation_id: @realisation.id)
   end
 
   def new

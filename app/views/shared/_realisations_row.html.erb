@@ -46,10 +46,9 @@
 -->
 <div class="realisation-grid" data-controller="drag" data-drag-url="/realisations/:id/move">
   <% all_realisations.each do |realisation| %>
-  <% realisation_photos = @all_photos.where(realisation_id: realisation.id) %>
   <div class="card" data-id="<%= realisation.id %>">
-    <% unless realisation_photos.empty? %>
-      <%= cl_image_tag(realisation_photos.first.photos.first.key, class: "card-img-top img-cover", height: 150) %>
+    <% unless realisation.photos.empty? %>
+      <%= cl_image_tag(realisation.photos.first.photos.first.key, class: "card-img-top img-cover", height: 150) %>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= realisation.title %><%= realisation.position %></h5>

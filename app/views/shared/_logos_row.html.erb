@@ -11,7 +11,7 @@
   <tbody data-controller="drag" data-drag-url="/clientlogos/:id/move">
     <% all_clientlogos.order(position: :desc).each do |logo| %>
       <tr data-drag-target="row" data-id="<%= logo.id %>">
-        <th scope="row"><%= logo.position %></i></th>
+        <th scope="row"><%= logo.position %></th>
         <% if logo.photo.attached? %>
           <td><%= cl_image_tag logo.photo.key, height: 50 %></td>
         <% else %>

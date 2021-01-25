@@ -10,8 +10,8 @@
   </thead>
   <tbody data-controller="drag" data-drag-url="/verbatims/:id/move">
     <% all_verbatims.order(position: :desc).each do |verbatim| %>
-      <tr data-id="<%= verbatim.id %>">
-        <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+      <tr data-drag-target="row" data-id="<%= verbatim.id %>">
+        <th scope="row"><%= verbatim.position %></i></th>
         <td><%= verbatim.author %></td>
         <td><%= link_to "Editer", edit_verbatim_path(verbatim.id) %>
         <%= link_to "Supprimer", verbatim_path(verbatim.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>

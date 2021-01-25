@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create, :edit, :update, :delete]
 
   def index
-    @articles = Article.all.where(published: true)
+    @articles = Article.all
+    respond_to do |format|
+      format.html
+      format.json { render json: { articles: @articles } }
+    end
   end
 
   def show
@@ -33,6 +37,12 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
+  end
+
+  def move
+    @article = Article.find(params[:id])
+    @article.insert_at(params[:position].to_i)
+    head :ok
   end
 
   def publish

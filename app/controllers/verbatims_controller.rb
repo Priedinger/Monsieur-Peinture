@@ -3,6 +3,10 @@ class VerbatimsController < ApplicationController
 
   def index
     @verbatims = Verbatim.all
+    respond_to do |format|
+      format.html
+      format.json { render json: { verbatims: @verbatims } }
+    end
   end
 
   def show

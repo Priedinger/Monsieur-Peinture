@@ -37,6 +37,23 @@ class PhotosController < ApplicationController
     @photo.destroy
   end
 
+  def move
+    @photo = Photo.find(params[:id])
+    @photo.insert_at(params[:position].to_i)
+    head :ok
+  end
+
+  def publish
+  @photo = Photo.find(params[:id])
+    if @photo.published == true
+      @photo.published = false
+      @photo.save
+    else
+      @photo.published = true
+      @photo.save
+    end
+  end
+
   private
 
   def photo_params

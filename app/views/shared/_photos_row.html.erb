@@ -1,13 +1,53 @@
-<%= link_to "Ajouter des photos", new_photo_path %>
 
-<div class="photos">
-      <% @all_photos.each do |photo| %>
-        <%= cl_image_tag photo.photos.first.key, width: 100, height: 100%>
-        <%= link_to "Supprimer", photo_path(photo.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %>
-        <%= link_to "Associer la photo", edit_photo_path(photo.id) %>
-        <% if photo.realisation_id? %>
-          <%= photo.realisation_id %>
+
+<%= link_to "Ajouter des photos", new_photo_path, class: "btn btn-primary" %>
+<table class="table table-bordered table-hover my-3">
+  <thead>
+    <tr>
+      <th style="width: 1%"></th>
+      <th style="width: auto">Aperçu</th>
+      <th style="width: auto">Actions</th>
+      <th style="width: auto">Statut</th>
+      <th style="width: auto">Réalisation (id)</th>
+    </tr>
+  </thead>
+  <tbody data-controller="drag" data-drag-url="/photos/:id/move">
+    <% all_photos.order(position: :asc).each do |photo| %>
+      <tr data-drag-target="row" data-id="<%= photo.id %>">
+        <th scope="row"><%= photo.position %></th>
+        <% if photo.photos.attached? %>
+          <td><%= cl_image_tag photo.photos.first.key, height: 50 %></td>
+        <% else %>
+          <td><%= photo.name %></td>
         <% end %>
-      <br>
-      <% end %>
-</div>
+        <td>
+          <%= link_to "Ajouter à une réalisation", edit_photo_path(photo.id), class: "btn btn-outline-primary btn-sm", :remote => true %>
+          <%= link_to "Supprimer", photo_path(photo.id), method: :delete, class: "btn btn-outline-primary btn-sm", :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
+        <% if photo.published == true %>
+          <td>
+            <div
+              id="photo-toggler-<%= photo.id %>"
+              class="btn btn-outline-success onoff btn-sm"
+              data-controller="publisher"
+              data-action="click->publisher#publish"
+              data-publisher-url="<%= publish_photo_path(photo.id) %>">
+              En ligne
+            </div>
+          </td>
+        <% else %>
+          <td>
+            <div
+              id="photo-toggler-<%= photo.id %>"
+              class="btn btn-outline-danger onoff btn-sm"
+              data-controller="publisher"
+              data-action="click->publisher#publish"
+              data-publisher-url="<%= publish_photo_path(photo.id) %>">
+              Hors ligne
+            </div>
+          </td>
+          <td><%= photo.realisation_id %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

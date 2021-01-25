@@ -37,8 +37,13 @@ Rails.application.routes.draw do
       patch :publish
     end
   end
+  resources :photos do
+    member do
+      patch :move
+      patch :publish
+    end
+  end
   resources :counters
-  resources :photos
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

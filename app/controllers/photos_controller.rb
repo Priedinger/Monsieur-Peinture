@@ -7,7 +7,6 @@ class PhotosController < ApplicationController
   def create
     if params[:photo]
       @photo = Photo.new(photo_params)
-      nb_of_photos = params[:photo][:photos].count
       photos = params[:photo][:photos]
       photos.each do |photo|
         create_one(photo)

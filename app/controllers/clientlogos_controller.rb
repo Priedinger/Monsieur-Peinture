@@ -15,6 +15,7 @@ class ClientlogosController < ApplicationController
 
   def create
     @clientlogo = Clientlogo.new(clientlogo_params)
+    @clientlogo.insert_at(1)
     @clientlogo.save
     redirect_to admin_path, notice: "Logo client ajouté"
   end

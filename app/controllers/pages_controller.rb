@@ -18,11 +18,11 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @all_banners = Banner.all
-    @all_clientlogos = Clientlogo.all
-    @all_verbatims = Verbatim.all
+    @all_banners = Banner.all.order(:position)
+    @all_clientlogos = Clientlogo.all.order(:position)
+    @all_verbatims = Verbatim.all.order(:position)
     @displayed_counter = Counter.first
     @all_realisations = Realisation.all.order(:position)
-    @all_articles = Article.all
+    @all_articles = Article.all.order(:position)
   end
 end

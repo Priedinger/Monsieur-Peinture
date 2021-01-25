@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.insert_at(1)
     @article.save
     redirect_to admin_path, notice: "Article ajouté"
   end

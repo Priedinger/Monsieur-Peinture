@@ -15,6 +15,7 @@ class VerbatimsController < ApplicationController
 
   def create
     @verbatim = Verbatim.new(verbatim_params)
+    @verbatim.insert_at(1)
     @verbatim.save
     redirect_to admin_path, notice: "Logo client ajouté"
   end

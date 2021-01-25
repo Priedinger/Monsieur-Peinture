@@ -31,11 +31,13 @@ logo15photo = URI.open('https://images.unsplash.com/photo-1549970604-a784b6ecde0
 puts "================"
 puts " "
 puts "Cleaning database"
+Photo.destroy_all
 User.destroy_all
 Counter.destroy_all
 Verbatim.destroy_all
 Banner.destroy_all
 Clientlogo.destroy_all
+Realisation.destroy_all
 puts "Database clean"
 puts " "
 puts "================"

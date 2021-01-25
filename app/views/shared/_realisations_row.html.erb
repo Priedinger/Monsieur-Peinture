@@ -17,23 +17,23 @@
         <td><%= link_to "Editer", edit_realisation_path(realisation.id) %>
         <%= link_to "Supprimer", realisation_path(realisation.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
         <% if realisation.published == true %>
-          <td> 
-            <div 
-              id="realisation-toggler-<%= realisation.id %>" 
-              class="btn btn-outline-success onoff btn-sm" 
-              data-controller="publisher" 
-              data-action="click->publisher#publish" 
+          <td>
+            <div
+              id="realisation-toggler-<%= realisation.id %>"
+              class="btn btn-outline-success onoff btn-sm"
+              data-controller="publisher"
+              data-action="click->publisher#publish"
               data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
               En ligne
             </div>
           </td>
         <% else %>
           <td>
-            <div 
-              id="realisation-toggler-<%= realisation.id %>" 
-              class="btn btn-outline-danger onoff btn-sm" 
-              data-controller="publisher" 
-              data-action="click->publisher#publish" 
+            <div
+              id="realisation-toggler-<%= realisation.id %>"
+              class="btn btn-outline-danger onoff btn-sm"
+              data-controller="publisher"
+              data-action="click->publisher#publish"
               data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
               Hors ligne
             </div>
@@ -46,46 +46,47 @@
 -->
 <div class="realisation-grid" data-controller="drag" data-drag-url="/realisations/:id/move">
   <% all_realisations.each do |realisation| %>
+  <% realisation_photos = @all_photos.where(realisation_id: realisation.id) %>
   <div class="card" data-id="<%= realisation.id %>">
-    <% if realisation.photos.attached? %>
-      <%= cl_image_tag(realisation.photos.first.key, class: "card-img-top img-cover", height: 150) %>
+    <% unless realisation_photos.empty? %>
+      <%= cl_image_tag(realisation_photos.first.photos.first.key, class: "card-img-top img-cover", height: 150) %>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= realisation.title %><%= realisation.position %></h5>
-      
+
       <% if realisation.description %>
         <p class="card-text"><i>Pas de description</i></p>
       <% else %>
         <p class="card-text"><%= realisation.description %></p>
 
       <% end %>
-      
+
     </div>
     <div class="card-footer d-flex justify-content-between px-5">
       <%= link_to edit_realisation_path(realisation.id) do %>
         <i class="fas fa-edit text-secondary"></i>
       <% end %>
-      <%= link_to realisation_path(realisation.id), 
-      method: :delete, :remote => true, 
+      <%= link_to realisation_path(realisation.id),
+      method: :delete, :remote => true,
       data: {
-        confirm: "Supprimer définitivement ?", 
-        controller: 'destroy', 
-        action: 'destroy#delete' 
+        confirm: "Supprimer définitivement ?",
+        controller: 'destroy',
+        action: 'destroy#delete'
       } do %>
         <i class="far fa-trash-alt text-secondary"></i>
       <% end %>
       <% if realisation.published == true %>
       <div class="custom-control custom-switch"
-        data-controller="publisher" 
-        data-action="input->publisher#toggle" 
+        data-controller="publisher"
+        data-action="input->publisher#toggle"
         data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
         <input type="checkbox" class="custom-control-input" id="customSwitch<%= realisation.id %>" checked>
         <label class="custom-control-label" for="customSwitch<%= realisation.id %>"></label>
       </div>
       <% else %>
         <div class="custom-control custom-switch"
-        data-controller="publisher" 
-        data-action="input->publisher#toggle" 
+        data-controller="publisher"
+        data-action="input->publisher#toggle"
         data-publisher-url="<%= publish_realisation_path(realisation.id) %>">
         <input type="checkbox" class="custom-control-input" id="customSwitch<%= realisation.id %>">
         <label class="custom-control-label" for="customSwitch<%= realisation.id %>"></label>

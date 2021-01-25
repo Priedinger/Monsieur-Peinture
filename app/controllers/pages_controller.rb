@@ -23,6 +23,7 @@ class PagesController < ApplicationController
     @all_verbatims = Verbatim.all.order(:position)
     @displayed_counter = Counter.first
     @all_realisations = Realisation.all.order(:position)
+    @all_photos = Photo.all
     @all_articles = Article.all.order(:position)
     @all_photos = Photo.all
   end

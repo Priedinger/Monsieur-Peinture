@@ -23,15 +23,14 @@
 
     <% @realisations.order(:position).each do |realisation| %>
       <div class="realisation" data-position="<%= realisation.position %>">
+        <% @realisation_photos = @realisations_photos.where(realisation_id: realisation.id) %>
         <%= link_to realisation_path(realisation) do %>
-          <% if realisation.photos.attached? %>
-          
-          <% if realisation.photos.first.image? %>
-            <%= cl_image_tag realisation.photos.first.key, crop: :fill %>           
-          <% else %>
-            <%= cl_video_tag realisation.photos.first.key, autoplay: :autoplay, loop: :loop, muted: :muted, crop: :fill %>
-          <% end %>
-          
+          <% unless @realisation_photos.empty? %>
+            <% if @realisation_photos.first.photos.first.image? %>
+              <%= cl_image_tag @realisation_photos.first.photos.first.key, crop: :fill %>
+            <% else %>
+              <%= cl_video_tag @realisation_photos.first.photos.first.key, autoplay: :autoplay, loop: :loop, muted: :muted, crop: :fill %>
+            <% end %>
           <% else %>
             <img src="https://www.kabylieclim.com/wp-content/uploads/2015/09/Pas-dimage-disponible.jpg" alt="">
           <% end %>

@@ -1,6 +1,5 @@
 class Realisation < ApplicationRecord
-  has_many_attached :photos
-  has_many_attached :newphotos
+  has_many :photos
 
   acts_as_list
 end

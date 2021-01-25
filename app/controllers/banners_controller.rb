@@ -5,6 +5,14 @@ class BannersController < ApplicationController
     @banner = Banner.new
   end
 
+  def index
+    @banners = Banner.all
+    respond_to do |format|
+      format.html
+      format.json { render json: { banners: @banners } }
+    end
+  end
+
   def create
     @banner = Banner.new(banner_params)
     @banner.insert_at(1)

@@ -3,6 +3,10 @@ class VerbatimsController < ApplicationController
 
   def index
     @verbatims = Verbatim.all
+    respond_to do |format|
+      format.html
+      format.json { render json: { verbatims: @verbatims } }
+    end
   end
 
   def show
@@ -15,6 +19,7 @@ class VerbatimsController < ApplicationController
 
   def create
     @verbatim = Verbatim.new(verbatim_params)
+    @verbatim.insert_at(1)
     @verbatim.save
     redirect_to admin_path, notice: "Logo client ajouté"
   end

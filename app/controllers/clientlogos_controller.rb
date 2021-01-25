@@ -3,6 +3,10 @@ class ClientlogosController < ApplicationController
 
   def index
     @clientlogos = Clientlogo.all
+    respond_to do |format|
+      format.html
+      format.json { render json: { clientlogos: @clientlogos } }
+    end
   end
 
   def show
@@ -15,6 +19,7 @@ class ClientlogosController < ApplicationController
 
   def create
     @clientlogo = Clientlogo.new(clientlogo_params)
+    @clientlogo.insert_at(1)
     @clientlogo.save
     redirect_to admin_path, notice: "Logo client ajouté"
   end

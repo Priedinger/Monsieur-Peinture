@@ -9,9 +9,9 @@
     </tr>
   </thead>
   <tbody data-controller="drag" data-drag-url="/articles/:id/move">
-    <% all_articles.order(position: :desc).each do |article| %>
-      <tr data-id="<%= article.id %>">
-        <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+    <% all_articles.order(:position).each do |article| %>
+      <tr data-drag-target="row" data-id="<%= article.id %>">
+        <th scope="row"><%= article.position %></i></th>
         <td><%= article.title %></td>
         <td><%= link_to "Editer", edit_article_path(article.id) %>
         <%= link_to "Supprimer", article_path(article.id), method: :delete, :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>

@@ -10,8 +10,8 @@
   </thead>
   <tbody data-controller="drag" data-drag-url="/banners/:id/move">
     <% all_banners.order(:position).each do |banner| %>
-      <tr data-id="<%= banner.id %>">
-        <th scope="row"><i class="fas fa-arrows-alt"></i></th>
+      <tr data-drag-target="row" data-id="<%= banner.id %>">
+        <th scope="row"><%= banner.position %></th>
         <td>
           <% if banner.photo.attached? %>
             <%= cl_image_tag banner.photo.key, height: 50 %>

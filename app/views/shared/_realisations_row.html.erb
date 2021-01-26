@@ -65,6 +65,9 @@
       <%= link_to edit_realisation_path(realisation.id) do %>
         <i class="fas fa-edit text-secondary"></i>
       <% end %>
+      <%= link_to new_photo_path(realisation_id: realisation.id) do  %>
+        <i class="far fa-images text-secondary"></i>
+      <% end %>
       <%= link_to realisation_path(realisation.id),
       method: :delete, :remote => true,
       data: {

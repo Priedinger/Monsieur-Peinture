@@ -24,6 +24,6 @@ class PagesController < ApplicationController
     @displayed_counter = Counter.first
     @all_realisations = Realisation.all.order(:position)
     @all_articles = Article.all.order(:position)
-    @all_photos = Photo.all
+    @all_photos = Photo.all.order(:position)
   end
 end

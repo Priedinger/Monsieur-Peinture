@@ -10,8 +10,6 @@
     <%= f.input :duration, label: "Durée de réalisation" %>
     <%= f.input :photo_credits, label: "Crédits photos" %>
     <%= f.input :description, label: "Brief client" %>
-    <%= f.input :newphotos, as: :file, input_html: { multiple: true, id: 'photo-input' } %>
-    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
     <%= f.button :submit, "Ajouter la réalisation", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>

@@ -21,7 +21,7 @@ class RealisationsController < ApplicationController
     @realisation = Realisation.new(realisation_params)
     @realisation.insert_at(1)
     @realisation.save
-    redirect_to admin_path, notice: "Réalisation crée"
+    redirect_to new_photo_path(realisation_id:[@realisation.id])
   end
 
   def edit

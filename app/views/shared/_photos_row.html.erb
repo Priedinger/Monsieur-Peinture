@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody data-controller="drag" data-drag-url="/photos/:id/move">
-    <% all_photos.order(position: :asc).each do |photo| %>
+    <% all_photos.each do |photo| %>
       <tr data-drag-target="row" data-id="<%= photo.id %>">
         <th scope="row"><%= photo.position %></th>
         <% if photo.photos.attached? %>

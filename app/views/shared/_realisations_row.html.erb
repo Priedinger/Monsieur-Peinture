@@ -48,7 +48,7 @@
   <% all_realisations.each do |realisation| %>
   <div class="card" data-id="<%= realisation.id %>">
     <% unless realisation.photos.empty? %>
-      <%= cl_image_tag(realisation.photos.first.photos.first.key, class: "card-img-top img-cover", height: 150) %>
+      <%= cl_image_tag(realisation.photos.order(:position).first.photos.first.key, class: "card-img-top img-cover", height: 150) %>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= realisation.title %><%= realisation.position %></h5>

@@ -4,11 +4,15 @@ export default class extends Controller {
   static targets = [ 'content', 'table', 'header']
 
   connect() {
-    console.log(this.tableTarget)
-    this.tableTarget.classList.remove('hidden-admin-table')
-    const defaultActive = document.getElementById('default-active')
-    defaultActive.classList.add('active');
-    this.headerTarget.innerText = defaultActive.innerText
+    const divQty = this.contentTarget.childElementCount;
+    const hiddenDiv = document.querySelectorAll('.hidden-admin-table').length
+    if (divQty === hiddenDiv) {
+      console.log(this.tableTarget)
+      this.tableTarget.classList.remove('hidden-admin-table')
+      const defaultActive = document.getElementById('default-active')
+      defaultActive.classList.add('active');
+      this.headerTarget.innerText = defaultActive.innerText
+    }
   }
 
   display() {

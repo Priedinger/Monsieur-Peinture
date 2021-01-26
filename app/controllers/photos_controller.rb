@@ -1,15 +1,24 @@
 class PhotosController < ApplicationController
 
+  def index
+    @photos = Photo.all
+     respond_to do |format|
+      format.html
+      format.json { render json: { photos: @photos } }
+    end
+  end
+
   def new
-    @photo = Photo.new
+    @photo = Photo.new(realisation_id: params[:realisation_id])
   end
 
   def create
     if params[:photo]
       @photo = Photo.new(photo_params)
       photos = params[:photo][:photos]
+      realisation_id = params[:photo][:realisation_id]
       photos.each do |photo|
-        create_one(photo)
+        create_one(photo, realisation_id)
       end
       redirect_to admin_path
     else
@@ -17,8 +26,8 @@ class PhotosController < ApplicationController
     end
   end
 
-  def create_one(photo)
-    @photo = Photo.new(photos: photo)
+  def create_one(photo, realisation_id)
+    @photo = Photo.new(photos: photo, realisation_id: realisation_id)
     @photo.save
   end
 

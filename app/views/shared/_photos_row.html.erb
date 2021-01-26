@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody data-controller="drag" data-drag-url="/photos/:id/move">
-    <% all_photos.order(position: :asc).each do |photo| %>
+    <% all_photos.each do |photo| %>
       <tr data-drag-target="row" data-id="<%= photo.id %>">
         <th scope="row"><%= photo.position %></th>
         <% if photo.photos.attached? %>
@@ -21,7 +21,7 @@
           <td><%= photo.name %></td>
         <% end %>
         <td>
-          <%= link_to "Ajouter à une réalisation", edit_photo_path(photo.id), class: "btn btn-outline-primary btn-sm", :remote => true %>
+          <%= link_to "Ajouter à une réalisation", edit_photo_path(photo.id), class: "btn btn-outline-primary btn-sm" %>
           <%= link_to "Supprimer", photo_path(photo.id), method: :delete, class: "btn btn-outline-primary btn-sm", :remote => true, data: {confirm: "Supprimer définitivement ?", controller: 'destroy', action: 'destroy#delete' } %></td>
         <% if photo.published == true %>
           <td>

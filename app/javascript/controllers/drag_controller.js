@@ -1,6 +1,6 @@
-// Visit The Stimulus Handbook for more details 
+// Visit The Stimulus Handbook for more details
 // https://stimulusjs.org/handbook/introduction
-// 
+//
 // This example controller works with specially annotated HTML like:
 //
 // <div data-controller="hello">
@@ -47,8 +47,8 @@ export default class extends Controller {
       });
     }
     ajax();
-    // c'est assez peu robuste...
+    // c'est assez peu robuste... pas grave on fait avec
     setTimeout(fetchFunction, 1000)
   }
-  
+
 }

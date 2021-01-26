@@ -2,7 +2,7 @@
   <%= simple_form_for @photo do |f| %>
     <%= f.input :photos, as: :file, input_html: { multiple: true, id: 'photo-input' } %>
     <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    <%= f.input :realisation_id, label: "Réalisation (id)" %>
+    <% f.input :realisation_id, label: "Réalisation (id)" %>
     <%= f.button :submit, "Valider", :class => "btn btn-primary w-100" %>
   <% end %>
 </div>
